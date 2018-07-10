@@ -20,8 +20,7 @@ var propertyURL_LIST = "../floordetail/floordetail.jsp?";
 
 var oldRootURL = "http://weixintest.ehaofang.com/efapp2/";//'http://agent2.ehaofang.com/efapp2/';//"http://weixintest.ehaofang.com/efapp2/";
 var rootURL ='http://jjrtest.ehaofang.com/';// 'http://agentapi.ehaofang.com/';//http://jjrtest.ehaofang.com/";
-var lunboUrl ='http://jjrtest.ehaofang.net/';// 'http://agent2.ehaofang.com/'
-var initUrl7='http://jjrtest.ehaofang.com/';
+var initUrl7='http://agentapi.ehaofang.net/';
 var appID ="wx9cbe0adb2edc523f";// "wx54409552def47f3f";//"wx9cbe0adb2edc523f";
 var demoURL = "http://weixintest.ehaofang.com/efangnet/weixin/member/demo.html";
 var loadWeinXinMember = "http://jjrtest.ehaofang.com/api/v1/agent/weixinLogin";//jjrtest.ehaofang.com

@@ -1,8 +1,6 @@
 ﻿window.onload = function () {
     var memberID=localStorage.getItem('memberID');//217669;//
     var userType=localStorage.getItem('userType');
-    var latitude = '';
-    var longitude = '';
     var xibaoType=userType-1;
     var thisState=2;//是否有定位
     // 即将上线
@@ -104,8 +102,8 @@
         wx.getLocation({
             type: 'wgs84', // 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'
             success: function (res) {
-                latitude = res.latitude;
-                longitude = res.longitude;
+                var latitude = res.latitude;
+                var longitude = res.longitude;
                 thisState=1;
                 // 附近优推
                 getData(initUrl7 + "api/v1/propert/nearbyProperty", "lat=" + latitude + "&lng=" + longitude + "&state=1&memberId="+memberID, firstlookProject);
@@ -116,7 +114,7 @@
             }
         });
     });
-    getData(initUrl7 + "api/v1/propert/nearbyProperty", "lat="+latitude+"&lng="+longitude+"&state="+thisState+"&memberId="+memberID, firstlookProject);
+    getData(initUrl7 + "api/v1/propert/nearbyProperty", "lat=&lng=&state=2&memberId="+memberID, firstlookProject);
 
     wx.error(function (res) {
         console.log(res)
@@ -217,7 +215,7 @@
     // 喜报
     getData(initUrl7 + "api/v1/mine/xibao", "choose="+xibaoType, xibao);
     // 轮播
-    PostData(lunboUrl+'efapp2/Project/image', "", image);
+    PostData('http://jjrtest.ehaofang.net/efapp2/Project/image', "", image);
 
     //微信获取地址
     getData(demoURL, "url=" + window.location.href, weixin);
@@ -409,7 +407,7 @@
             document.getElementById("property_list").innerHTML = "";
             return
         }
-        getData(initUrl7+"api/v1/propert/getallProperty", 'state=2&memberId='+memberID+'&search='+arg+'&cityId=&saleState=&buildType=&lat=&lng=', thisProperty);
+        getData(initUrl7+"api/v1/propert/getallProperty", 'state='+thisState+'&memberId='+memberID+'&search='+arg+'&cityId=&saleState=&buildType=&lat=&lng=', thisProperty);
     }
 
     function thisProperty(data) {

@@ -1,4 +1,4 @@
-﻿#cusDetailPage{
+#cusDetailPage{
     padding-bottom: .65rem;
 }
 #cusDetailPage header{
@@ -187,8 +187,7 @@
 /*进度*/
 #proDetailPage{
     background: #F8F8F8;
-    min-height: 6.67rem;
-    padding-bottom: .65rem;
+    height: 6.67rem;
     display: none;
 }
 #proDetailPage>h2{
@@ -336,7 +335,6 @@
 /*客户分析*/
 #customAnaPage{
     display: none;
-    padding-bottom: .65rem;
 }
 #customAnaPage header{
     position: relative;

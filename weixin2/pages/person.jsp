@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,14 +7,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
-    <link rel="stylesheet" href="../css/person.css?v=201825121244">
+    <link rel="stylesheet" href="../css/person.css?v=201815121244">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../js/rem.js"></script>
 </head>
 <body>
 <div class="page">
     <div id="personInfo">
         <div id="setting"><img style="width: .2rem;" src="../img/me_ic_settings@2x.png" alt=""></div>
         <div class="avator">
-            <img id="personImg" style="width: .8rem;height: .8rem;" src="../img/profile_img_head_man@2x.png" alt="">
+            <img style="width: .8rem;" src="../img/profile_img_head_man@2x.png" alt="">
             <ul>
                 <li><span id="userName"></span><img style="width: .4rem;" src="../img/me_ic_level@2x.png" alt=""></li>
                 <li id="userTitle"></li>
@@ -27,7 +29,7 @@
             <p>签到有礼</p>
         </div>
         <div id="level">
-            <p><img style="width: .2rem;height: .25rem;" src="../img/me_ic_rights@2x.png" alt=""></p>
+            <p><img src="../img/me_ic_rights@2x.png" alt=""></p>
             <p>等级权益</p>
         </div>
         <div id="jifen">
@@ -40,7 +42,7 @@
         </div>
     </div>
     <div class="gap"></div>
-    <div id="poster"><img style="width: 3.35rem;" src="../img/me_banner_invite@2x.png" alt=""></div>
+    <div class="poster"><img style="width: 3.35rem;" src="../img/me_banner_invite@2x.png" alt=""></div>
     <div class="gap"></div>
     <ul id="func-lists">
         <li id="inviteLi">
@@ -103,9 +105,7 @@
         </li>
     </ul>
 </div>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/rem.js?v=201845121244"></script>
-<script type="text/javascript" src="../js/person.js?v=201845121244"></script>
+<script type="text/javascript" src="../js/person.js?v=201815121244"></script>
 <script>
 </script>
 </body>

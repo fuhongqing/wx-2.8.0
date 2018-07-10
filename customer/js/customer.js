@@ -43,8 +43,8 @@ $(function () {
         type:'GET',
         async:false,
         data:{
-            memberId:localStorage.getItem('memberID'),//	是	Long	经纪人id  171929
-            branchId:localStorage.getItem('branchId'),//	是	Long	分行id  80194280
+            memberId:localStorage.getItem('memberID'),//	是	Long	经纪人id  69
+            branchId:localStorage.getItem('branchId'),//	是	Long	分行id  264436
         },
         success:function (data) {
             if(data.code==200){
@@ -83,8 +83,8 @@ $(function () {
             type:'GET',
             async:false,
             data:{
-                memberId:localStorage.getItem('memberID'),//	是	Long	经纪人id  171929
-                branchId:localStorage.getItem('branchId'),//	是	Long	分行id  80194280
+                memberId:localStorage.getItem('memberID'),//	是	Long	经纪人id  69
+                branchId:localStorage.getItem('branchId'),//	是	Long	分行id  264436
                 customerState:customerState,//	是	Integer	参考customerState枚举值，（搜索全部信息（报备+来访+成交+发佣）传0，1为报备，2为来访，3为成交，4为发佣）
                 searchStr:thissearchStr,//	否	String	搜索内容（客户名称/项目名称/号码后四位）
                 pageNo:pageNum,//	否	Integer	第几页，页码从1开始，默认pageNo为1

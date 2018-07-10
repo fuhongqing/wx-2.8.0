@@ -1,29 +1,24 @@
-﻿var _res = null;
+var _res = null;
 var pointOrigin;
+var distanceFlag;
 var map = new BMap.Map('');
 var memberID =GetUrlParms().memberID;//217669;//
 var userType =GetUrlParms().userType;
-var thisState=2;
-var thisLng='',thisLat='';
+var thisState=2;//是否有定位
 $ajax("api/v1/propert/cityList", {}, getCityList);
 // 微信获取地址
 getData(demoURL, {url: window.location.href}, weixin);
-var sellState = 3;
-var houseType='';
-var salePriceLevel = '';
-var cityid = '';
-var sortState = '';
 $(".filter").on("click", ".value_label_box input", function () {
+    var sellState = $("input[name=sellState]:checked").val();
+    var houseType = $("input[name=houseType]:checked").val();
+    var salePriceLevel = $("input[name=salePriceLevel]:checked").val();
+    var cityid = $("input[name=cityID]:checked").val();
     var minPrice='',maxPrice='';
-    sellState = $("input[name=sellState]:checked").val();
-    houseType = $("input[name=houseType]:checked").val();
-    salePriceLevel = $("input[name=salePriceLevel]:checked").val();
-    cityid = $("input[name=cityID]:checked").val();
-    sortState = $("input[name=dis]:checked").val();
     switch (salePriceLevel) {
         case '0':
             minPrice=0;
             maxPrice=500000;
+
             break;
         case '1':
             minPrice=500000;
@@ -64,6 +59,7 @@ $(".filter").on("click", ".value_label_box input", function () {
         default:
             break;
     }
+    distanceFlag = +$("input[name=dis]:checked").val();
     getData(initUrl7 + "api/v1/propert/getallProperty", {
         state: thisState,
         memberId: memberID,
@@ -71,11 +67,10 @@ $(".filter").on("click", ".value_label_box input", function () {
         buildType: houseType,
         cityId: cityid,
         search: '',
-        lat: thisLat,	//否	Double	纬度
-        lng: thisLng,//否	Double	经度
+        lat: '',	//否	Double	纬度
+        lng: '',//否	Double	经度
         maxPrice:maxPrice,//	否	Double	最高价(检索条件)
-        minPrice:minPrice,//	否	Double	最低价(检索条件)
-        sortState:sortState//	否	int	排序规则(指定坐标:1从近到远,2从远到近)
+        minPrice:minPrice//	否	Double	最低价(检索条件)
     }, allproject);
 });
 
@@ -104,31 +99,30 @@ function weixin(data) {
 
                 function translateCallback(data) {
                     if (data.status === 0) {
+                        thisState = 1;
                         pointOrigin = new BMap.Point(data.points[0].lng, data.points[0].lat);
-                        thisLat=data.points[0].lat;
-                        thisLng=data.points[0].lng;
-                        thisState=1;
+
                         getData(initUrl7 + "api/v1/propert/getallProperty", {
                             state: 1,
                             memberId: memberID,
-                            lat: thisLat,
-                            lng: thisLng,
+                            lat: data.points[0].lat,
+                            lng: data.points[0].lng,
                             cityId: '',//	否	Long	城市id
                             search: '',//	否	string	搜索条件
-                            saleState:3,//	否	Byte	在售状态 ‘’：全部 1:预售 2:待开盘 3:在售 4:撤场 5:售罄 (3 =在售 ，12 =待开盘 ， 45 =售罄)
+                            saleState: '',//	否	Byte	在售状态 ‘’：全部 1:预售 2:待开盘 3:在售 4:撤场 5:售罄 (3 =在售 ，12 =待开盘 ， 45 =售罄)
                             buildType: ''//	否	Byte	建筑类型 1: 别墅 2:住宅 3:商铺 4:商住 5:其他
                         }, allproject);
                     } else {
-                        thisState=2;
+                        thisState = 2;
                         getData(initUrl7 + "api/v1/propert/getallProperty", {
                             state: 2,
                             memberId: memberID,
-                            saleState: 3,
-                            buildType: '',
-                            cityId: '',
-                            search: '',
-                            lat: '',	//否	Double	纬度
-                            lng: '',//否	Double	经度
+                            cityId: '',//	否	Long	城市id
+                            search: '',//	否	string	搜索条件
+                            saleState: '',//	否	Byte	在售状态 ‘’：全部 1:预售 2:待开盘 3:在售 4:撤场 5:售罄 (3 =在售 ，12 =待开盘 ， 45 =售罄)
+                            buildType: '',//	否	Byte	建筑类型 1: 别墅 2:住宅 3:商铺 4:商住 5:其他
+                            lat: '',//
+                            lng: ''
                         }, allproject);
                     }
                 }
@@ -139,10 +133,9 @@ function weixin(data) {
         console.log(res)
     });
 }
-
 function getData(url, data, callback) {
     $.ajax({
-        type: "get",
+        type: "GET",
         url: url,
         data: data,
         dataType: "json",
@@ -151,7 +144,6 @@ function getData(url, data, callback) {
         },
         error: function (error) {
             console.log(error);
-
         }
     });
 }
@@ -218,7 +210,6 @@ function getCityList(data) {
         $.each(checkBoxUl, function (index, ele) {
             $(ele).find("input[type=radio]").eq(0).prop("checked", true);
         });
-        $('.saleType').prop("checked", true);;
         $(".filter_box .filter_item_box").on("click", function () {
             _this_radio = $(this);
             checkBoxUl.hide();
@@ -257,7 +248,22 @@ function allproject(data) {
             }
 
         }
-
+        if (distanceFlag && distanceFlag === 1) {
+            _data = _data.sort(function (a, b) {
+                if (!a["distance"]) {
+                    a["distance"] = Infinity
+                }
+                if (!b["distance"]) {
+                    b["distance"] = Infinity
+                }
+                return a["distance"] - b["distance"]
+            })
+        }
+        if (distanceFlag && distanceFlag === 2) {
+            _data = _data.sort(function (a, b) {
+                return b["distance"] - a["distance"]
+            })
+        }
         for (var j = 0, m = _data.length; j < m; j++) {
             if (String(_data[j]["distance"]).length > 3) {
                 distanceNum = Math.round(_data[j]["distance"] / 1000) + 'km';
@@ -283,7 +289,7 @@ function allproject(data) {
                 "<div class='content_box'>" +
                 "<p>" + "<span style='font-weight:bold;white-space: nowrap;max-width: 5rem;overflow: hidden;text-overflow: ellipsis'>" + _data[j]["name"] + "</span>" +
                 saleState(_data[j]["saleState"]) + "</span>" + (_data[j]["isSign"] ? "<span class='qianYue'>签约项目</span>" : "") + "</p>" +
-                "<p><img src='img/ic__location@2x.png' />" + "<span style='width: 4rem;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;'>" + _data[j]["cityName"] + _data[j]["boroughName"] + "</span>" +
+                "<p><img src='img/ic__location@2x.png' />" + "<span style='width: 4rem;text-overflow: ellipsis;white-space: nowrap;'>" + _data[j]["cityName"] + _data[j]["boroughName"] + "</span>" +
                 (_data[j]["longitude"] ? "<span>(" + distanceNum + ")" : "") + "</span></p>" +
                 "<p>" + buildingType(_data[j]["buildType"]) + "</p>" +
                 "<p style='font-weight: bold'><img style='width:.7rem;margin-right: .25rem;vertical-align: middle' src='img/home_ic_wage@2x.png'/>" +
@@ -304,6 +310,7 @@ function allproject(data) {
         $("#noMatchItem").show()
     }
 }
+
 function getDistance(itemPoint, pointOrigin) {
     var map = new BMap.Map('');
     var pointB = new BMap.Point(itemPoint.Longitude, itemPoint.Latitude);
@@ -341,12 +348,12 @@ $("#search_cancel").on("click", function () {
     getData(initUrl7 + "api/v1/propert/getallProperty", {
         state: thisState,
         memberId: memberID,
-        saleState: '',
-        buildType: '',
-        cityId: '',
-        search: '',
-        lat: thisLat,	//否	Double	纬度
-        lng: thisLng,//否	Double	经度
+        lat: '',
+        lng: '',
+        cityId: '',//	否	Long	城市id
+        search: '',//	否	string	搜索条件
+        saleState: '',//	否	Byte	在售状态 ‘’：全部 1:预售 2:待开盘 3:在售 4:撤场 5:售罄 (3 =在售 ，12 =待开盘 ， 45 =售罄)
+        buildType: ''//	否	Byte	建筑类型 1: 别墅 2:住宅 3:商铺 4:商住 5:其他
     }, allproject);
 });
 
@@ -354,9 +361,9 @@ function chargeProperty27(arg) {
     getData(initUrl7 + "api/v1/propert/getallProperty", {
         state: thisState,
         memberId: memberID,
-        cityId: '',
-        lat: thisLat,	//否	Double	纬度
-        lng: thisLng,//否	Double	经度
+        lat: '',
+        lng: '',
+        cityId: '',//	否	Long	城市id
         search: arg,//	否	string	搜索条件
         saleState: '',//	否	Byte	在售状态 ‘’：全部 1:预售 2:待开盘 3:在售 4:撤场 5:售罄 (3 =在售 ，12 =待开盘 ， 45 =售罄)
         buildType: ''//	否	Byte	建筑类型 1: 别墅 2:住宅 3:商铺 4:商住 5:其他

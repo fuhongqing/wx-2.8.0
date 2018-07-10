@@ -1,13 +1,8 @@
-﻿$(function () {
+$(function () {
+    var thismemberID=localStorage.getItem('memberID');
+    var userType =localStorage.getItem('userType');
     $('#userName').html(thisfullName);
     $('#userTitle').html(thisTitle);
-    if(thispicture){
-        $('#personImg').attr('src',thispicture);
-    }
-    //普通员工无员工和客户列表
-    if(manageLevel==0){
-        $('#myEmployee,#myCustomer').hide();
-    }
     document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
     var $alert = {
         init: function () {
@@ -36,35 +31,73 @@
         window.location.href = "../../home/persontop.jsp";
     });
     $("#myEmployee").on("click", function () {
-        window.location.href = "myEmployee.jsp";
+       // window.location.href = "myEmployee.jsp";
+        $alert.init();
     });
     $("#myCustomer").on("click", function () {
-        window.location.href = "myCustomer.jsp";
+        //window.location.href = "myCustomer.jsp";
+        $alert.init();
     });
     $("#identifyCom").on("click", function () {
-        $.get(dataStr+'v1/mine/myCompany/'+thismemberID,function (data) {
-            if(data.code==200){
-                if(data.data.userType==2){
-                    var identyInfoId=data.data.renzhengId;//认证id
-                    var identyState=data.data.state;//认证状态  1提交 2驳回 3通过
-                    $(location).attr('href','../../identify/identifydetail.jsp?infoId='+identyInfoId+'&state='+identyState);
-                } else if(data.data.userType==1&&data.data.state!='4'){
-                    var identyInfoId=data.data.renzhengId;//认证id
-                    var identyState=data.data.state;//认证状态  1提交 2驳回 3通过
-                    $(location).attr('href','../../identify/identifydetail.jsp?infoId='+identyInfoId+'&state='+identyState);
-                }else{
-                    $(location).attr('href','../../identify/identifyadd.jsp');
-                }
-            }
-        });
+        $alert.init();
     });
     $("#helpLi").on("click", function () {
         window.location.href = "help.jsp";
     });
-    $("#inviteLi,#poster").on("click", function () {
-        window.location.href = "../../identify/invite.jsp?userName=" + thisfullName;
+    $("#inviteLi").on("click", function () {
+        //window.location.href = "../../identify/invite.jsp?memberId=" + thismemberID + "&state=0&type=0&userName=" + thisfullName;
+        $alert.init();
     });
     $(".avator").on("click", function () {
         window.location.href = "personal.jsp";
+    });
+
+    window.confirm = function (message) {
+        var iframe = document.createElement("IFRAME");
+        iframe.style.display = "none";
+        iframe.setAttribute("src", 'data:text/plain,');
+        document.documentElement.appendChild(iframe);
+        var alertFrame = window.frames[0];
+        var result = alertFrame.window.confirm(message);
+        iframe.parentNode.removeChild(iframe);
+        return result;
+    };
+    $('#footer-item').on('click', 'li', function () {
+        var index = $(this).index();
+        switch (index) {
+            case 0:
+                window.location.href = "index.jsp";
+                break;
+            case 1:
+                if (userType == "2") {
+                    window.location.href = "../../customer/customer.jsp";
+                } else {
+                    var con;
+                    con = confirm("是否去绑定分行码查看？");
+                    if (con == true) {
+                        window.location.href = "../../login/login.jsp?member=1";
+                    }
+                }
+                break;
+            case 2:
+                if (userType == "2") {
+                    window.location.href = "add-reserve-client.jsp";
+                } else {
+                    var con;
+                    con = confirm("是否去绑定分行后报备？");
+                    if (con == true) {
+                        window.location.href = "../../login/login.jsp?member=1";
+                    }
+                }
+                break;
+            case 3:
+                window.location.href = "dongtai.jsp";
+                break;
+            case 4:
+                window.location.href = "person.jsp";
+                break;
+            default:
+                break;
+        }
     });
 });

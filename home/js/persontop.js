@@ -1,4 +1,4 @@
-﻿var memberID = localStorage.getItem('memberID');//69;//
+var memberID = localStorage.getItem('memberID');//69;//
 
 var month = (new Date()).getMonth() ? (new Date()).getMonth() : "12";
 $("#month").html(month);
@@ -8,7 +8,7 @@ $.get(initUrl7+"api/v1/mine/yeji/"+memberID+'?timeType=1', xiangGuan);
 
 function personTop(data) {
     if (data.code == "200") {//Number(1/3).toFixed(2)*100
-        var personYeji=(Number(data.data.memberYeJi/data.data.countYeJi)*100).toFixed(2)+'%';
+        var personYeji=Number(data.data.memberYeJi/data.data.countYeJi).toFixed(2)*100+'%';
         con.font = "60px PingFang-SC";
         con.fillText(personYeji, 90, 180);
         $("#cJJinE").html(data.data.LastMonthYeJi);

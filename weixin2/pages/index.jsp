@@ -1,4 +1,4 @@
-﻿<%@ page pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +8,10 @@
     <link href="http://www.ehaofang.com/img/ef.ico" type="image/x-icon" rel="shortcut icon">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <meta http-equiv="Expires" content="0">
-    <link rel="stylesheet" href="../../home/less/index.css?v=201835121244">
-    <link rel="stylesheet" href="../../home/static/swiper.min.css?v=201825121244">
+    <link rel="stylesheet" href="../../home/less/index.css?v=201805121244">
+    <link rel="stylesheet" href="../../home/static/swiper.min.css?v=201805121244">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="../../home/js/setting.js?v=201815251108"></script>
+    <script src="../../home/js/setting.js?v=201805251108"></script>
 </head>
 <body>
 <div class="page_index" id="page_index">
@@ -22,7 +22,7 @@
             <input type="search" placeholder="项目名称" disabled/>
         </div>
     </div>
-    <div class="container" style=" padding: .5rem 2rem;">
+    <div class="container">
         <div class="nav">
             <div id="to_loupan">
                 <img src="../../home/img/home_ic_building_export@2x.png"/>
@@ -89,8 +89,8 @@
             <p><img src="../img/tabbar_ic_client_dis@2x.png" alt=""></p>
             <p>客户</p>
         </li>
-        <li style="height: 3rem;">
-            <img style="width:3rem" src="../img/add-client.png" alt="">
+        <li style="padding-top: 2px">
+            <img style="width:2.8rem" src="../img/add-client.png" alt="">
         </li>
         <li>
             <p><img src="../img/tabbar_ic_trend_dis@2x.png" alt=""></p>
@@ -122,6 +122,6 @@
 <script src="../../home/static/swiper.min.js?v=201807161332"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script src="../../home/static/fastclick.min.js?v=201807161332"></script>
-<script type="text/javascript" src="../../home/js/getMemer.js?v=201857161332"></script>
+<script type="text/javascript" src="../../home/js/getMemer.js?v=201807161332"></script>
 </body>
 </html>

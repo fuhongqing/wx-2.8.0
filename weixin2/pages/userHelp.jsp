@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,7 +35,7 @@
 		</style>
 	</head>
 	<body>
-	<div onclick="history.back()" class="imgtop"><a class="imgBack"></a></div>
+	<div class="imgtop"><a class="imgBack"></a></div>
 		<div class="swiper-container">
 		    <div class="swiper-wrapper">
 		        <div class="swiper-slide user1"><img src="../img/user1.png" /></div>

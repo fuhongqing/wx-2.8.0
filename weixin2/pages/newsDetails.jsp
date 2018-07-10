@@ -19,7 +19,7 @@
 			.newsDetails{padding:3rem 0.5rem;}
 			.newsDetails h4{font-size: 16px;line-height:1.5rem;font-weight:600;}
 			.newsDetails p{font-size: 14px;color:#333;width: 100%;}
-			.newsDetails p img{width: 100%;height:10rem;}
+			.newsDetails p img{width: 100%;}
 			.newsDetails p:nth-child(2){font-size: 12px;line-height:1.5rem; color:#42C29D;text-align: right;}
 			.newsDetails p:nth-child(3){line-height: 1.5em;}
 			

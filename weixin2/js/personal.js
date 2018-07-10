@@ -1,9 +1,19 @@
 ﻿	$(function(){
 		FastClick.attach(document.body);
-        //个人头像
-        if(thispicture){
-            $('#editPhotoBox>img').attr('src',thispicture);
-        }
+//	    console.log(thismemberID);
+window.confirm = function (message) {
+   var iframe = document.createElement("IFRAME");
+   iframe.style.display = "none";
+   iframe.setAttribute("src", 'data:text/plain,');
+   document.documentElement.appendChild(iframe);
+   var alertFrame = window.frames[0];
+   var result = alertFrame.window.confirm(message);
+   iframe.parentNode.removeChild(iframe);
+   return result;
+ };	        	
+ 
+
+   
       
     	if(thissex == "2"){
     		$("#editSex span").html("女");
@@ -216,6 +226,7 @@
 							$(".loaderWrap").css("display","none");
 						},4000);
 						$.get(dataStr+"v1/agent/getCode?phone="+thisNum,function(data){
+							console.log(data);
 							$(".loaderWrap").css("display","none");
 							if (data.code == 200) {
 								warn("验证码发送成功！");

@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/init.css?v=201815121244">
-    <link rel="stylesheet" href="css/customerDetail.css?v=201825121244">
+    <link rel="stylesheet" href="css/customerDetail.css?v=201815121244">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
@@ -36,9 +36,14 @@
         <div id="dealCard" class="card">
             <!--动态-->
         </div>
-        <div class="visitPro dealPro" >
-
-            <div class="reportDetail" id="beforeDaDing">
+        <div class="visitPro dealPro">
+            <div class="visitDetail">
+                <div class="relativeDiv">
+                    <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;margin-right: .1rem">一访</span><img style="width: .16rem;" src="img/clients_ic_attachment@2x.png" alt="">
+                </div>
+                <div class="progressTime" id="deaVisTime"></div>
+            </div>
+            <div class="reportDetail">
                 <div class="relativeDiv">
                     <span class="circle"></span><span style="color: #02BD9C;font-size: 16px">报备</span>
                 </div>
@@ -50,13 +55,18 @@
 
         </div>
         <div class="visitPro signPro">
-            <div class="dealDetail" id="afterSign">
+            <div class="dealDetail">
                 <div class="relativeDiv">
                     <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;">大定</span>
                 </div>
                 <div class="progressTime" id="signDeaTime"></div>
             </div>
-
+            <div  class="visitDetail">
+                <div class="relativeDiv">
+                    <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;margin-right: .1rem">一访</span><img style="width: .16rem;" src="img/clients_ic_attachment@2x.png" alt="">
+                </div>
+                <div class="progressTime" id="signVisTime"></div>
+            </div>
             <div class="reportDetail">
                 <div class="relativeDiv">
                     <span class="circle"></span><span style="color: #02BD9C;font-size: 16px">报备</span>
@@ -75,11 +85,17 @@
                 </div>
                 <div class="progressTime" id="comSigTime"></div>
             </div>
-            <div  class="dealDetail" id="afterDealPro">
+            <div  class="dealDetail">
                 <div class="relativeDiv">
                     <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;">大定</span>
                 </div>
                 <div class="progressTime" id="comDeaTime"></div>
+            </div>
+            <div class="visitDetail">
+                <div class="relativeDiv">
+                    <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;margin-right: .1rem">一访</span><img style="width: .16rem;" src="img/clients_ic_attachment@2x.png" alt="">
+                </div>
+                <div class="progressTime" id="comVisTime"></div>
             </div>
             <div class="reportDetail">
                 <div class="relativeDiv">
@@ -182,7 +198,7 @@
         <p>我的</p>
     </li>
 </ul>
-<script  src="js/setting.js?v=201815121244"></script>
-<script type="text/javascript" src="js/customerDetail.js?v=201825121244"></script>
+<script  src="js/setting.js"></script>
+<script type="text/javascript" src="js/customerDetail.js?v=201815121244"></script>
 </body>
 </html>

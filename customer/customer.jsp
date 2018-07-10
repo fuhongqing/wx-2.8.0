@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +8,8 @@
     <meta name="format-detection" content="telephone=no"/>
 
     <link rel="stylesheet" href="css/light7.min.css">
-    <link rel="stylesheet" href="css/init.css?v=201836521244">
-    <link rel="stylesheet" href="css/customer.css?v=201836521244">
+    <link rel="stylesheet" href="css/init.css?v=201815121244">
+    <link rel="stylesheet" href="css/customer.css?v=201815121244">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/light7.min.js"></script>
 </head>
@@ -81,7 +81,7 @@
         <p>我的</p>
     </li>
 </ul>
-<script type="text/javascript" src="js/setting.js?v=201815121244"></script>
-<script type="text/javascript" src="js/customer.js?v=201826521244"></script>
+<script type="text/javascript" src="js/setting.js"></script>
+<script type="text/javascript" src="js/customer.js?v=201815121244"></script>
 </body>
 </html>

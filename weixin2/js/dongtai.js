@@ -1,15 +1,12 @@
 $(function(){
-    var searchArr='';
-    if(location.search.slice(1).split('=')[1]){
-        searchArr =location.search.slice(1).split('=')[1];
+    var searchArr = location.search.slice(1).split('=')[1];
+    var propertyId;
+    if(!searchArr){
+        propertyId='';
+    }else{
+        propertyId=searchArr;
     }
-
-    // if(!searchArr){
-    //     propertyId='';
-    // }else{
-    //     propertyId=searchArr;
-    // }
-    $.get(dataStr+"v1/mine/getAllDynamic",{pageSize:"30",pageNo:"1",propertyId:searchArr}, function(data){
+    $.get(dataStr+"v1/mine/getAllDynamic",{pageSize:"30",pageNo:"1",propertyId:propertyId}, function(data){
          if(data.code==200){
               var resultData=data.data;
               var resultHtml='';

@@ -24,7 +24,7 @@
 			<span>常见问题</span>
 		</div>
 		<div class="helpContent">
-			<h3>长得太帅怎么办？</h3>
+			<h3>长得太帅怎么办？</h4>
 			<p>习惯就好了，想当初我也是这样。</p>
 		</div>
 		<script src="../js/jquery.min.js" type="text/javascript" ></script>

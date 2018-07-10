@@ -7,9 +7,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
     <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/floorDetail.css?v=201835121244">
+    <link rel="stylesheet" href="css/floorDetail.css?v=201825121244">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+        <script src="js/floorDetail.js"></script>
     </head>
     <body>
     <!--loading-->
@@ -73,6 +74,7 @@
         </div>
         <div class="preferential">
             <div class="left">
+                <img src="img/ic_coupon.png" alt="\">
                 <span>优惠活动</span>
             </div>
             <div class="right">
@@ -157,12 +159,35 @@
         <div class="title">
             <h1>规则说明</h1>
         </div>
-        <ul>
-            <li><img src="img/image_hours@2x.png" alt=""></li>
-            <li><img src="img/image_note@2x.png" alt=""></li>
-            <li><img src="img/image_days@2x.png" alt=""></li>
-            <li><img src="img/image_clients@2x.png" alt=""></li>
-        </ul>
+        <div class="lists">
+            <ul>
+                <li>
+                    <div><img src="img/ic_time_hours@2x.png" alt=""></div>
+                    <div>提前一小时报备， 24小时有效。</div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <div class="secondDiv">
+                        <img src="img/ic_note@2x.png" alt="">
+                        <img class="page" src="img/Page 1@2x.png" alt="">
+                    </div>
+                    <div>客户填写来访带看 单，并签字确认。</div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <div><img src="img/ic_time_days@2x.png" alt=""></div>
+                    <div>保护期为30日。超 过则按新渠道确认。 </div>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <div><img src="img/ic_clients@2x.png" alt=""></div>
+                    <div>客户界定以协议和 现场判断为准。 </div>
+                </li>
+            </ul>
+        </div>
     </section>
     <div class="gap"></div>
     <!--猜你喜欢-->

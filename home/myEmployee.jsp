@@ -9,7 +9,7 @@
     <link href="http://www.ehaofang.com/img/ef.ico" type="image/x-icon" rel="icon">
     <link href="http://www.ehaofang.com/img/ef.ico" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" href="less/myEmployee.css">
-    <script src="js/setting.js?v=201814251233"></script>
+    <script src="js/setting.js?v=201804251233"></script>
     <script src="static/fastclick.min.js"></script>
 </head>
 <body>

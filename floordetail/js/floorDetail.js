@@ -94,15 +94,15 @@
         contactToolbar(idArr[6]);
     });
     var searchArr = location.search.slice(1).split('&');
-    var floorUrl = 'http://jjrtest.ehaofang.com/',//'http://agentapi.ehaofang.net/',//'http://agentapi.ehaofang.com/'
+    var floorUrl = 'http://agentapi.ehaofang.net/',//'http://jjrtest.ehaofang.com/',//'http://agentapi.ehaofang.com/'
         weixinUrl = 'http://weixintest.ehaofang.com/efangnet/',//'http://weixin.ehaofang.com/efangnet/',//'http://weixintest.ehaofang.com/efangnet/'
         wxAppId = 'wx9cbe0adb2edc523f',//'wx54409552def47f3f',
         imgUrl = "http://images.ehaofang.com/",
         propertyId =searchArr[0].split('=')[1],// 1,//
         memberId =searchArr[1].split('=')[1],// 217669,//
-        sign =searchArr[2].split('=')[1],// 1,//
-        userType =searchArr[3].split('=')[1],// 2,//
-        isShangXian =searchArr[4].split('=')[1],// 1,//
+        sign = searchArr[2].split('=')[1],//1,//
+        userType = searchArr[3].split('=')[1],//"2",//
+        isShangXian =searchArr[4].split('=')[1],//"1",//
         propertyName = '',
         hasConsult = true;
     if (isShangXian == 0) {
@@ -233,28 +233,24 @@
                 var list = [];
                 // $('#propertyImg .append-buttons').html('');
                 if (propertyImageData.effectImage && effectImage) {
-                    shareImgUrl=propertyImageData.effectImage[0]["imageUrl"];
                     for (var i = 0, l = effectImage; i < l; i++) {
                         list.push("<li class='swiper-slide'><img data-src='" + propertyImageData.effectImage[i]["imageUrl"] + "' class='swiper-lazy'></li>");
                     }
                     $('#propertyImg .append-buttons').append("<span class='active effectImage'>效果图（"+effectImage+"）</span>");
                 }
                 if (propertyImageData.trafficImage && trafficImage) {
-                    shareImgUrl=propertyImageData.trafficImage[0]["imageUrl"];
                     for (var i = 0, l = trafficImage; i < l; i++) {
                         list.push("<li class='swiper-slide'><img data-src='" + propertyImageData.trafficImage[i]["imageUrl"] + "' class='swiper-lazy'></li>");
                     }
                     $('#propertyImg .append-buttons').append("<span class='trafficImage'>交通图（"+trafficImage+"）</span>");
                 }
                 if (propertyImageData.realSceneImage && realSceneImage) {
-                    shareImgUrl=propertyImageData.realSceneImage[0]["imageUrl"];
                     for (var i = 0, l = realSceneImage; i < l; i++) {
                         list.push("<li class='swiper-slide'><img data-src='" + propertyImageData.realSceneImage[i]["imageUrl"] + "' class='swiper-lazy'></li>");
                     }
                     $('#propertyImg .append-buttons').append("<span class='realSceneImage'>实景图（"+realSceneImage+"）</span>");
                 }
                 if (propertyImageData.sampleImage && sampleImage) {
-                    shareImgUrl=propertyImageData.sampleImage[0]["imageUrl"];
                     for (var i = 0, l = sampleImage; i < l; i++) {
                         list.push("<li class='swiper-slide'><img data-src='" + propertyImageData.sampleImage[i]["imageUrl"] + "' class='swiper-lazy'></li>");
                     }
@@ -435,22 +431,32 @@
         url: floorUrl + 'api/v1/mine/getPropertyAttention',
         data: {
             propertyId:propertyId,//是	Long	楼盘ID
+            pageNo:1,//否	int	页码(默认第1页)
+            pageSize:20//否	int	页长(默认20行)
         },
         success: function (data) {
             if(data.code==200){
-                var memberData=data.data.data;
-                var memberNum=data.data.content;
-                if(memberNum>10){
-                    var memberImg=memberData.slice(0,5);
+                var memberNum=data.data;
+                if(memberNum.length>0&&memberNum.length<6){
+                    var memberImg=memberNum.slice(0,5);
                     var memberImgHtml='';
                     $.each(memberImg,function (i) {
                         memberImgHtml+=`
-                    <img style="width: .25rem;height: .25rem;border-radius: 50%" src="${memberImg[i].picture}"/>
+                    <img style="width: .3rem;height: .3rem;border-radius: 50%" src="${memberImg[i].picture}"/>
                     `;
                     });
-                    $('#attention').show();
-                    $('#attentionImg').html(memberImgHtml+'<img style="width: .22rem;" src="img/ic_more@2x.png"/>');
-                    $('#attentionNum').html('…等'+memberNum+'位经纪人都在关注');
+                    $('#attentionImg').html(memberImgHtml);
+                    $('#attentionNum').html('…等'+memberNum.length+'位经纪人都在关注');
+                }else if(memberNum.length>=6){
+                    var memberImg=memberNum.slice(0,5);
+                    var memberImgHtml='';
+                    $.each(memberImg,function (i) {
+                        memberImgHtml+=`
+                    <img style="width: .3rem;height: .3rem;border-radius: 50%" src="${memberImg[i].picture}"/>
+                    `;
+                    });
+                    $('#attentionImg').html(memberImgHtml+'<img style="width: .27rem;" src="img/ic_more@2x.png"/>');
+                    $('#attentionNum').html('…等'+memberNum.length+'位经纪人都在关注');
                 }else{
                     $('#attention').hide();
                 }
@@ -466,10 +472,7 @@
         $.ajax({
             type: 'get',
             url: floorUrl + 'api/v1/propert/propertyDeatil',
-            data: {
-                propertyId: propertyId,
-                memberId:memberId//	是	int	经纪人id
-            },
+            data: {propertyId: propertyId},
             success: function (data) {
                 $('#loading').hide();
                 var floorDetailData = data.data.propertyDeatil;
@@ -581,7 +584,7 @@
                                     _distance = _distance + 'm';
                                 }
                                 var attressHtml = ("\n " +
-                                    "<div class=\"left\">\n<span>" + floorDetailData[0].address + "</span>\n </div>\n " +
+                                    "<div class=\"left\">\n  <img src=\"img/project_ic_location_big@2x.png\" alt=\"\"><span>" + floorDetailData[0].address + "</span>\n </div>\n " +
                                     "<div class=\"right\">\n<span>" + _distance + "</span>\n  </div>\n ");
                                 $('#floorInfo>.attress').html(attressHtml);
                             }
@@ -651,27 +654,22 @@
                     map.panTo(point);
                     map.enableDragging();
                     $('#sellPoints>.iconType').on('click', '.bus', function () {
-                        $(this).css('transform','scale(.7)').siblings().css('transform','scale(.5)');
                         sellPoint1 = 1;
                         Search('交通', point);
                     })
                         .on('click', '.school', function () {
-                            $(this).css('transform','scale(.7)').siblings().css('transform','scale(.5)');
                             sellPoint1 = 2;
                             Search('学校', point);
                         })
                         .on('click', '.restaurant', function () {
-                            $(this).css('transform','scale(.7)').siblings().css('transform','scale(.5)');
                             sellPoint1 = 3;
                             Search('餐饮', point);
                         })
                         .on('click', '.shop', function () {
-                            $(this).css('transform','scale(.7)').siblings().css('transform','scale(.5)');
                             sellPoint1 = 4;
                             Search('购物', point);
                         })
                         .on('click', '.hospital', function () {
-                            $(this).css('transform','scale(.7)').siblings().css('transform','scale(.5)');
                             sellPoint1 = 5;
                             Search('医院', point);
                         });
@@ -703,8 +701,8 @@
                     wx.ready(function () {
                         wx.onMenuShareTimeline({
                             title: floorDetailData[0].name + ' ' + floorDetailData[0].minPrice + '元/㎡',
-                            link:weixinUrl+ 'pages/efshare/pro.jsp?propertyID=' + propertyId + '&memberId=' + memberId,
-                            imgUrl:shareImgUrl,
+                            link: weixinUrl + 'pages/efshare/pro.jsp?propertyID=' + propertyId + '&memberId=' + memberId,
+                            imgUrl: imgUrl + shareImgUrl,
                             success: function () {
                                 console.log("分享成功");
                             },
@@ -714,8 +712,8 @@
                         });
                         wx.onMenuShareAppMessage({
                             title: floorDetailData[0].name + ' ' + floorDetailData[0].minPrice + '元/㎡',
-                            link:weixinUrl+ 'pages/efshare/pro.jsp?propertyID=' + propertyId + '&memberId=' + memberId,
-                            imgUrl:shareImgUrl,
+                            link: weixinUrl + 'pages/efshare/pro.jsp?propertyID=' + propertyId + '&memberId=' + memberId,
+                            imgUrl: imgUrl + shareImgUrl,
                             success: function () {
                                 console.log("分享成功");
                             },
@@ -816,7 +814,6 @@
     $.ajax({
         url:floorUrl+'api/v1/mine/getAllDynamic',
         type:'get',
-        async:false,
         data:{
             pageNo:1,//	否	int	页码(1为第1页,默认1)
             pageSize:30,//	否	int	密码(默认20)

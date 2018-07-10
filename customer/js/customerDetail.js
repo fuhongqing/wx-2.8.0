@@ -1,12 +1,11 @@
-﻿$(function () {
+$(function () {
     var searchArr = location.search.slice(1).split('=')[1];
     var paramsData=searchArr.split(';');
-    var customerId=paramsData[0];//929426;//
+    var customerId=paramsData[0];//10002;//
     var customerState=paramsData[1];//5;//
-    var transactionNumber=paramsData[2];//'A201807023258';//
+    var transactionNumber=paramsData[2];//'B201805227064';//
 
     $('#editeFollow').on('click',function () {
-        $('#edit').val('');
         $('#cusDetailPage').hide();
         $('#followEditePage').show();
     });
@@ -92,7 +91,7 @@
                 var dadingInfoData=data.data.dadingInfo;//大定信息
                 var commissionInfoData=data.data.commissionInfo;//申佣信息
                 var commissionChecksData=data.data.commissionChecks;//申佣审批记录
-                var contactHtml=`<a href="tel:${commonInfoData[0].saleUserPhone?commonInfoData[0].saleUserPhone:''}">联系案场</a>`;
+                var contactHtml=`<a href="tel:${commonInfoData[0].saleUserPhone}">联系案场</a>`;
                 $('#contactCase').html(contactHtml);
                 $('#propertyNum').html(commonInfoData[0].propertyName+' '+commonInfoData[0].buildingName+'-'+commonInfoData[0].unitName+'-'+commonInfoData[0].roomNumber);
                 //客户分析
@@ -128,7 +127,7 @@
                     </div>
                     <div>
                         <div>预约案场：${reportInfoData[0].saleUserName}</div>
-                        <div>${reportInfoData[0].visitType}</div>
+                        <div>班车</div>
                     </div>
                     <div>
                         <div>来访：${reportInfoData[0].visitorsNumber}人</div>
@@ -174,7 +173,7 @@
                     $('#visitedCard').html(visitInfoHtml);
                     function visit(t) {
                         var imgArr=[],imgHtml='';
-                        if(!visitInfoData[t].imageUrl){
+                        if(visitInfoData[t].imageUrl){
                             imgArr=visitInfoData[t].imageUrl.split(',');
                         }
                         $.each(imgArr,function (i) {
@@ -194,70 +193,11 @@
                         <div id="hasUrl"><span class="label">带看单</span>${imgHtml}</div>
                         `;
                         $('#visitedSec').html(visitedSecHtml);
-                        if(!visitInfoData[t].imageUrl){
+                        if(visitInfoData[t].imageUrl==''){
                             $('#hasUrl').hide();
                         }
                     }
                     visit(visitNum-1);
-
-                    //发佣，签约来访
-                    var afterDealHtml='',afterSignHtml='',beforeDaDingHtml='';
-                    for(var i=visitNum;i>0;i--){
-                        afterDealHtml+=`
-                        <div class="visitDetail afterDeal">
-                            <div class="relativeDiv">
-                                <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;margin-right: .1rem">${i}访</span><img style="width: .16rem;" src="img/clients_ic_attachment@2x.png" alt="">
-                            </div>
-                            <div class="progressTime">${visitInfoData[i-1].realVisitTime}</div>
-                        </div>
-                        `;
-                        afterSignHtml+=`
-                        <div class="visitDetail afterSign">
-                            <div class="relativeDiv">
-                                <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;margin-right: .1rem">${i}访</span><img style="width: .16rem;" src="img/clients_ic_attachment@2x.png" alt="">
-                            </div>
-                            <div class="progressTime">${visitInfoData[i-1].realVisitTime}</div>
-                        </div>
-                        `;
-                        beforeDaDingHtml+=`
-                        <div class="visitDetail beforeDaDing">
-                            <div class="relativeDiv">
-                                <span  class="circle"></span><span class="line"></span><span style="color: #02BD9C;font-size: 16px;margin-right: .1rem">${i}访</span><img style="width: .16rem;" src="img/clients_ic_attachment@2x.png" alt="">
-                            </div>
-                            <div class="progressTime">${visitInfoData[i-1].realVisitTime}</div>
-                        </div>
-                        `;
-                    }
-                    $('#afterDealPro').after(afterDealHtml);
-                    $('#afterSign').after(afterSignHtml);
-                    $('#beforeDaDing').before(beforeDaDingHtml);
-                    //发佣
-                    $('.afterDeal').on('click',function () {
-                        var thisIndex=visitNum+2-$(this).index();
-                        $('#proDetailPage>header>h2').html('来访详情');
-                        $('#proDetailPage>h2').text(thisIndex+'访').css('color','#2EA9FF');
-                        $('#reportSec,#cusDetailPage,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro').hide();
-                        $('#visitedSec,#proDetailPage').show();
-                        visit(thisIndex-1);
-                    });
-                    //签约
-                    $('.afterSign').on('click',function () {
-                        var thisIndex=visitNum+1-$(this).index();
-                        $('#proDetailPage>header>h2').html('来访详情');
-                        $('#proDetailPage>h2').text(thisIndex+'访').css('color','#2EA9FF');
-                        $('#reportSec,#cusDetailPage,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro').hide();
-                        $('#visitedSec,#proDetailPage').show();
-                        visit(thisIndex-1);
-                    });
-                    //大定
-                    $('.beforeDaDing').on('click',function () {
-                        var thisIndex=visitNum-$(this).index();
-                        $('#proDetailPage>header>h2').html('来访详情');
-                        $('#proDetailPage>h2').text(thisIndex+'访').css('color','#2EA9FF');
-                        $('#reportSec,#cusDetailPage,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro').hide();
-                        $('#visitedSec,#proDetailPage').show();
-                        visit(thisIndex-1);
-                    });
                     for(var i=visitNum-1;i>0;i--){
                         visitNumHtml+=`
                      <div class="visitForList">
@@ -333,6 +273,7 @@
                 </div>
                 `;
                     $('#dealCard').html(dadingInfoHtml);
+                    $('#deaVisTime').html(visitInfoData[visitInfoData.length-1].realVisitTime);
                     $('#deaRepTime').html(reportInfoData[0].reportTime);
                     var dealSecHtml=`
                 <div><span class="label">大定时间</span><span>${dadingInfoData[0].ddTime}</span></div>
@@ -373,6 +314,7 @@
                 `;
                     $('#signCard').html(signInfoHtml);
                     $('#signDeaTime').html(dadingInfoData[0].ddTime);
+                    $('#signVisTime').html(visitInfoData[visitInfoData.length-1].realVisitTime);
                     $('#signRepTime').html(reportInfoData[0].reportTime);
                     var signSecHtml=`
                  <div><span class="label">签约时间</span><span>${signInfoData[0].signTime}</span></div>
@@ -404,8 +346,9 @@
                 `;
                     $('#commissionCard').html(commissionInfoHtml);
                     $('#comSigTime').html(signInfoData[0].signTime);
-                    $('#comDeaTime').html(dadingInfoData[0].ddTime);
-                    $('#comRepTime').html(reportInfoData[0].reportTime);
+                    $('#signDeaTime').html(dadingInfoData[0].ddTime);
+                    $('#signVisTime').html(visitInfoData[visitInfoData.length-1].realVisitTime);
+                    $('#signRepTime').html(reportInfoData[0].reportTime);
                     var commissionSecHtml=`
                  <div><span class="label">佣金金额</span><span>${commissionInfoData[0].commissionMoney} 元</span></div>
                 <div><span class="label">折佣金额</span><span>${commissionInfoData[0].zyMoney} 元</span></div>
@@ -489,12 +432,12 @@
         $('#proDetailPage>header>h2').html('报备详情');
         $('#proDetailPage>h2').html('报备').css('color','#02BD9C');
     });
-    // $('.visitDetail').on('click',function () {
-    //     $('#proDetailPage>header>h2').html('来访详情');
-    //     $('#proDetailPage>h2').html('一访').css('color','#2EA9FF');
-    //     $('#reportSec,#cusDetailPage,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro').hide();
-    //     $('#visitedSec,#proDetailPage').show();
-    // });
+    $('.visitDetail').on('click',function () {
+        $('#proDetailPage>header>h2').html('来访详情');
+        $('#proDetailPage>h2').html('一访').css('color','#2EA9FF');
+        $('#reportSec,#cusDetailPage,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro').hide();
+        $('#visitedSec,#proDetailPage').show();
+    });
     $('#dealCard,.dealDetail').on('click',function () {
         $('#proDetailPage>header>h2').html('大定详情');
         $('#proDetailPage>h2').html('大定').css('color','#FFA100');

@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -58,7 +58,7 @@
 		<script src="../js/jquery.min.js" type="text/javascript" ></script>
 		<script src="../js/rem.js?v=201804121244" type="text/javascript" ></script>
 		<script src="../js/fastclick.js" type="text/javascript"></script>
-		<script src="../js/help.js?v=201914291356" type="text/javascript"></script>
+		<script src="../js/help.js?v=201804291356" type="text/javascript"></script>
 		<%@ include file="trafficStatistic.jsp"%>
 	</body>
 </html>

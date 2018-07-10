@@ -72,7 +72,7 @@ textarea::-webkit-input-placeholder{color: #ddd;opacity:1;}
 	border-radius: 4px;}
 .add-client .sectionBox{border:0;}	
 /*.add-client .sectionBox label{padding:0.15rem 0;}*/
-#finish{float: right;opacity: 0.5;font-size: 18px;position:absolute;right:0.5rem;color: #333;}
+#finish{float: right;opacity: 0.5;font-size: 18px;position:absolute;right:0.5rem;}
 .finish{opacity:1;}
 .add-client #visitway,.add-client .caseSaleBox{border-top:1px solid #eee;}
 .add-client .caseSaleBox{border-bottom:0;}

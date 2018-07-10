@@ -53,17 +53,16 @@ function check(Num){
 	}
 }
 
-   var hrdataStr = "http://hr.ehaofang.org/api/";
+   var hrdataStr = "http://hr.ehaofang.net/api/";
    
-   var newsdataStr = "http://xmjyapi.ehaofang.org/api";
+   var newsdataStr = "http://xmjyapi.ehaofang.net/api";
    var imgurlStr = "http://images.ehaofang.com/";
 
-   // var dataStr = "http://agentapi.ehaofang.net/api/";
-   var dataStr = 'http://jjrtest.ehaofang.com/api/';
+   var dataStr = "http://agentapi.ehaofang.net/api/";
 	// var dataStr2 = "http://weixintest.ehaofang.com/efapp2";
    var dataStr3 = "http://jjrtest.ehaofang.net/efapp2";//2.5.3测试接口
 
-var thismemberID =localStorage.getItem('memberID');//197993
+var thismemberID = localStorage.getItem('memberID');
 
 
 var thisparentID = "";
@@ -71,12 +70,11 @@ var thisbranchID = "";
 var thisunionID = "";
 var thisfullName = "";
 var thissex = "";
-var thispicture='';
 var thisagencyName = "";
 var thisbranchName = "";
 var thisphone = "";
 var thisagencyCode = "";
-var userType=localStorage.getItem('userType');
+var userType;
 var manageLevel;
 var thisTitle;
 function title(t){
@@ -98,7 +96,7 @@ function title(t){
             break;
 	}
 }
-$.ajax({//+thismemberID,
+$.ajax({
 	url: dataStr + "v1/agent/getChannelAgent?id="+thismemberID,
     type:"get",
     async:false,
@@ -109,18 +107,33 @@ $.ajax({//+thismemberID,
 		    	thisunionID = data.data.weixinUnionId;
 		    	thisfullName = data.data.name;//经纪人名字
 		    	thissex = data.data.sex;//性别（0-未知，1-男，2-女）
-                thispicture=data.data.picture;//头像
 		    	thisagencyName = data.data.companyName;//公司名字
 		    	thisbranchName = data.data.branchName;//分行名字
 		    	thisphone = data.data.phone;//经纪人手机号
 		    	thisagencyCode = data.data.branchCode;//分行码
-		    	//userType = data.data.userType;//账号类型 1 游客  2 经纪人
-		    	manageLevel =  data.data.manageLevel;//管理级别(0-普通员工，1-分行经理 2-法人)
+		    	userType = data.data.userType;//账号类型 1 游客  2 经纪人
+		    	manageLevel =  data.data.manageLevel;//管理级别(0-普通员工，1-分行经理)
                 thisTitle=title(data.data.title);//经纪人职称  0 销售顾问  1 分行店长  2 分行经理   3 公司高管  4 其他职位
+		} else{
+			
 		}
+
     }
 });
+var thiscustomerStatus = [];//客户列表传参
+$.ajax({
+	url: dataStr + "/options",
+    type:"get",
+    async:false,
+    success: function(data) {
+		if (data.code == 200) {
+			thiscustomerStatus  =data.data.customerStatus;
+		} else{
+			
+		}
 
+    }
+});
 $('#footer-item').on('click', 'li', function () {
     var index = $(this).index();
     switch (index) {

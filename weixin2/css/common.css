@@ -1,4 +1,4 @@
-﻿*{padding:0;margin:0;font-family:Helvetica;}
+*{padding:0;margin:0;font-family:Helvetica;}
 html,body{width:100%;background: #EDF4F4;font-family:Helvetica;}
 a{text-decoration: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
 li{list-style: none;}
@@ -23,7 +23,6 @@ element {
     border-bottom: 1px solid #DDDDDD;
     position: fixed;
     top: 0;
-    left: 0;
     background: #fff;
     z-index: 5;
 }
@@ -37,39 +36,35 @@ element {
 .back,.proBack,.editback,.helpback,.chooseback{display:inline-block;height:0.9rem;width:30px;position: absolute;left:0;top:0.5rem;
 	background:url(../img/top_back.png) no-repeat center center;background-size: contain;}
 .proBack{font-size:14px;line-height:1rem;width:35px;padding-left:10px;margin-left:8px;background-position-x: left;}
-/*----------footer---------*/
-#footer-item {
-    position: fixed;
-    bottom: 0;
-    height: 2.65rem;
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: #fff;
-    z-index: 2000;
-    border-top: .04rem solid #DDDDDD;
+/*-----------底部部分-----------*/
+/*
+footer{height:50px;width:100%;background: #fff;position: fixed;left: 0;bottom: 0; 
+	display: flex;flex-flow: row nowrap;border-top: 1px solid #ddd;}
+footer a{display: block;flex:1;color:#999;font-size:14px;text-align: center;line-height: 14px;}
+*/
+footer {
+	height: 65px;
+	width: 100%;
+	background: #fff;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	border-top: 1px solid #ddd;
 }
 
-#footer-item p {
-    text-align: center;
-    color: #999999;
-    font-size: 15px;
-}
-#footer-item p > img {
-    width: .98rem;
+footer a {
+	display: block;
+	height:65px;
+	width:20%;
+	float: left;
+	color: #999;
+	font-size: 14px;
+	text-align: center;
+	line-height: 10px;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-#footer-item > li > img {
-    width: 1.79rem;
-}
-/*2.7*/
-.look-item{
-    margin:20px;padding-bottom:15px;border-bottom: 1px solid #F1F1F1
-}
-.look-item>div:last-child{
-    display: flex;justify-content: space-between;align-items: flex-start;
-}
+footer a i{display:block; height:24px;width:24px;margin:10px auto;}
 /*-----------清除浮动------------*/
 .clearfix{zoom:1;}
 .clearfix:after{content:'';display:block;height:0;font-size:0;

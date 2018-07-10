@@ -279,9 +279,6 @@ main .loaders .loader {
     border-bottom: .01rem solid #EEEEEE;
     flex-wrap: wrap;
 }
-#attentionImg{
-    flex: 1;
-}
 #attentionImg>img{
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -508,8 +505,8 @@ main .loaders .loader {
     text-align: center;
     color: #fff;
     font-size: 14px;
-    background: linear-gradient(to right,  rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);
-    background: -webkit-linear-gradient(to right,  rgba(0,0,0,.1) 0%,rgba(0,0,0,.6) 100%);
+    background: linear-gradient(to right,  rgba(0,0,0,.1) 0%,rgba(0,0,0,.2) 100%);
+    background: -webkit-linear-gradient(to right,  rgba(0,0,0,.1) 0%,rgba(0,0,0,.2) 100%);
 }
 #renderings div.status{
     color: #333333;
@@ -554,20 +551,41 @@ main .loaders .loader {
     width: 3.12rem;
     margin: 0 auto;
 }
-#declaration>ul{
+#declaration>.lists{
+    width: 4.9rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: nowrap;
-    overflow: auto;
 }
-#declaration>ul img{
-    width: 1.25rem;
-    height: 1.27rem;
+#declaration img{
+    width: .5rem;
 }
-#declaration>ul>li{
-    margin-right: .02rem;
-    white-space: nowrap;
+#declaration img.page{
+    width: .28rem;
+}
+#declaration ul{
+    padding: .05rem;
+    margin-right: .1rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    box-shadow: 0 0 .04rem rgba(175, 175, 175, 0.5);
+    text-align: center;
+    color: #666666;
+    font-size: 12px;
+}
+#declaration ul>li>div:first-child{
+    margin-bottom: .1rem;
+}
+#declaration ul:last-child{
+    margin-right: 0;
+}
+#declaration .secondDiv{
+    position: relative;
+}
+#declaration .secondDiv>img:last-child{
+    position: absolute;
+    left: calc(50% - .11rem);
+    top: .12rem;
 }
 /*footer*/
 footer{

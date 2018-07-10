@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="less/persontop.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="js/setting.js?v=201814251233"></script>
+    <script src="js/setting.js?v=201804251233"></script>
     <script src="static/fastclick.min.js"></script>
 </head>
 <body>
@@ -36,6 +36,6 @@
     </div>
 </div>
 <script src="static/jquery.min.js"></script>
-<script src="js/persontop.js?v=201814121244"></script>
+<script src="js/persontop.js?v=201804121244"></script>
 </body>
 </html>

@@ -68,13 +68,13 @@
                 <span>分行码：</span>
                 <input type="text" placeholder="咨询分行经理获取分行码" id="branchCode">
             </div>
-            <div id="addAgent">添加公司认证</div>
+            <%--<div id="addAgent">添加公司认证</div>--%>
             <div id="next" class="btn">下一步</div>
         </section>
         <footer>
             <p>如何获取分行码？</p>
             <p>分行码是易好房合作经纪门店的唯一标识，可咨询您的分行经理获取唯一的邀请码，完善提交后即可报备/带看，赚取佣金，并享受便捷透明的结佣方式。 </p>
-            <p>若贵司未与我司签约合作，可点击 <a onclick="$('#addAgent').click()">添加公司认证</a> 或者拨打<a href="tel:021-31338882">021-31338882</a>咨询合作。</p>
+            <p>若贵司未与我司签约合作，可拨打<a href="tel:021-31338882">021-31338882</a>咨询合作</p>
         </footer>
     </div>
     <!--提示框-->
@@ -92,6 +92,6 @@
             <li class="4item"><span>其他</span><img src="img/all_ic_selecte_green.png" alt=""></li>
         </ul>
     </div>
-<script type="text/javascript" src="js/login.js?v=201841121244"></script>
+<script type="text/javascript" src="js/login.js?v=201815121244"></script>
 </body>
 </html>

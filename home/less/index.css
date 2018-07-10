@@ -66,7 +66,7 @@ button {
   outline: none;
 }
 .page_index {
-  padding-bottom: 3.3rem;
+  padding-bottom: 50px;
   position: relative;
 }
 .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
@@ -189,7 +189,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+  /*background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));*/
   line-height: 1.75rem;
   color: #ffffff;
   text-align: center;
@@ -393,6 +393,35 @@ input[type=search]:focus + span {
 .j-pop1 .j-pop-btn .cancel {
   border-right: 1px solid #eeeeee;
 }
+footer {
+  height: 62px;
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #ddd;
+  z-index: 11;
+}
+footer a {
+  text-decoration: none;
+  display: block;
+  height: 62px;
+  width: 20%;
+  float: left;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+  line-height: 10px;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+footer a i {
+  display: block;
+  height: 24px;
+  width: 24px;
+  margin: 10px auto;
+}
 /*----------footer---------*/
 #footer-item {
   position: fixed;
@@ -412,13 +441,9 @@ input[type=search]:focus + span {
   color: #999999;
   font-size: 14px;
 }
-#footer-item p:first-child{
-  width: 1.4rem;
-  height: 1.4rem;
-}
+
 #footer-item p > img {
-  width: 1.2rem;
-  margin-bottom: .2rem;
+  width: 1.1rem;
 }
 
 #footer-item > li > img {

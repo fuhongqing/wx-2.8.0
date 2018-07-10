@@ -1,4 +1,4 @@
-﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -12,8 +12,8 @@
 		<meta http-equiv="Cache-Control" content="no-cache" />	
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">		
 		<title>个人资料</title>
-		<link rel="stylesheet" type="text/css" href="../css/common.css?v=2018190511"/>
-		<link rel="stylesheet" type="text/css" href="../css/mine.css?v=2018190511"/>
+		<link rel="stylesheet" type="text/css" href="../css/common.css?v=2017090511"/>
+		<link rel="stylesheet" type="text/css" href="../css/mine.css?v=2017090511"/>
 	</head>
 	<body>
 		<div class="top"> 
@@ -124,9 +124,9 @@
 		</div>
 		
 		<script src="../js/jquery.min.js" type="text/javascript" ></script>
-		<script src="../js/rem.js?v=201814120937" type="text/javascript" ></script>
+		<script src="../js/rem.js?v=201804120937" type="text/javascript" ></script>
 		<script src="../js/fastclick.js" type="text/javascript"></script>
-		<script src="../js/personal.js?v=2018090511" type="text/javascript"></script>
+		<script src="../js/personal.js?v=2017090511" type="text/javascript"></script>
 		<%@ include file="trafficStatistic.jsp"%>
 	</body>
 </html>

@@ -4,10 +4,10 @@
     localStorage.setItem('wxOpenId', weixinOpenId);
     localStorage.setItem('wxUnionId', weixinunionId);
     document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
-    var member = location.search.slice(1).split('=')[1];
-
+    var member = location.search.slice(8);
     var
-        initUrl ='http://jjrtest.ehaofang.com/',//    http://agentapi.ehaofang.com/
+        // ifAddUrl = 'http://jjrtest.ehaofang.net/',//'http://agent2.ehaofang.com/',
+        initUrl ='http://agentapi.ehaofang.net/',// 'http://agentapi.ehaofang.com/',
         userType,
         jobNum = 4,
         mobilePhone = '',
@@ -66,7 +66,7 @@
     function weixinLogin(url) {
         $.ajax({
             url: initUrl + 'api/v1/agent/weixinLogin',
-            type: 'get',
+            type: 'GET',
             async:false,
             data: {
                 weixinOpenId: weixinOpenId,
@@ -82,38 +82,47 @@
                     localStorage.setItem('memberID', memberId);
                     localStorage.setItem('userType', userType);
                     localStorage.setItem('branchId',result.branchId);
-                    $.get(initUrl+'api/v1/mine/myCompany/'+memberId,function (data) {
-                        if(data.code==200){
-                            var thisUserState;
-                            if(data.data.userType==2){
-                                thisUserState=1;
-                            }else if(data.data.userType==1&&data.data.state!='4'){
-                                thisUserState=1;
-                            }else{
-                                thisUserState=-1;
+                    // $.ajax({
+                    //     url: ifAddUrl + 'efapp2/login/v2.5.3/certificationCompany',
+                    //     type: 'GET',
+                    //     async: false,
+                    //     data: {memberId: memberId},
+                    //     success: function(data) {
+                    //         if (data.status == 'success') {
+                    //             var userStateData = data.info;
+                    //             if (userStateData.length > 0) {
+                    //                 var userState = userStateData[0].userState;
+                    //                 localStorage.setItem('userState', userState);
+                    //             } else {
+                    //                 var userState = -1;
+                    //                 localStorage.setItem('userState', userState);
+                    //             }
+                    //         }
+                    //     },
+                    //     error: function() {
+                    //         console.log('服务器内部错误');
+                    //     }
+                    // });
+                    if (userType == 2) {
+                        $(location).attr('href', url);
+                    } else {
+                        pageStatus(2);
+                        $('#ignore').click(function() {
+                            $(location).attr('href', '../weixin2/pages/index.jsp');
+                        });
+                        $('#next').click(function() {
+                            if ($(this).html() == '完成') {
+                                branchCode();
                             }
-                            if (userType == 2) {
-                                $(location).attr('href', url);
+                        });
+                        $('#addAgent').on('click', function() {
+                            if (localStorage.getItem('userState') >= 0) {
+                                showTips('您已有公司正在审核中，请勿重复添加认证');
                             } else {
-                                pageStatus(2);
-                                $('#ignore').click(function() {
-                                    $(location).attr('href', '../weixin2/pages/index.jsp');
-                                });
-                                $('#next').click(function() {
-                                    if ($(this).html() == '完成') {
-                                        branchCode();
-                                    }
-                                });
-                                $('#addAgent').on('click', function() {
-                                    if (thisUserState >= 0) {
-                                        showTips('您已有公司正在审核中，请勿重复添加认证');
-                                    } else {
-                                        $(location).attr('href', '../identify/identifyadd.jsp');
-                                    }
-                                });
+                                $(location).attr('href', '../identify/identifyadd.jsp?memberId=' + memberId);
                             }
-                        }
-                    });
+                        });
+                    }
                 } else if (data.code == 45001) {
                     pageStatus(0);
                     $('#login').click(function() {
@@ -128,48 +137,15 @@
             }
         });
     }
-    if (member == 1) {
-        pageStatus(2);
-        $('#ignore').click(function() {
-            weixinLogin();
-        });
-        $('#next').click(function() {
-            if ($(this).html() == '完成') {
-                branchCode();
-            }
-        });
-        $('#addAgent').on('click', function() {
-            $.get(initUrl+'api/v1/mine/myCompany/'+localStorage.getItem('memberID'),function (data) {
-                if(data.code==200){
-                    var thisUserState;
-                    if(data.data.userType==2){
-                        thisUserState=1;
-                    }else if(data.data.userType==1&&data.data.state!='4'){
-                        thisUserState=1;
-                    }else{
-                        thisUserState=-1;
-                    }
-                    if (thisUserState >= 0) {
-                        showTips('您已有公司正在审核中，请勿重复添加认证');
-                    } else {
-                        $(location).attr('href', '../identify/identifyadd.jsp');
-                    }
-                }
-            });
-        });
-    }else{
-        weixinLogin(member);
-    }
+    weixinLogin(pageUrl);
     function branchCode() {
         var branchCode = $('#branchCode').val();
-        if(branchCode.length<=0){
+        if (!branchCode) {
             showTips('分行码不能为空');
-        }else if(branchCode.length<8||branchCode.length>8){
-            showTips('请填写正确的分行码');
-        }else{
+        } else {
             $.ajax({
                 url: initUrl + 'api/v1/agent/getCompanyByBranchcode',
-                type: 'get',
+                type: 'GET',
                 async: false,
                 data: {branchCode: branchCode},
                 success: function(data) {
@@ -190,7 +166,6 @@
                             success: function(data) {
                                 if (data.code == '200') {
                                     localStorage.setItem('userType', '2');
-                                    weixinLogin();
                                     $(location).attr('href', '../weixin2/pages/index.jsp');
                                 } else {
                                     showTips(data.msg || '朋友，我偶感不适，建议使用易好房经纪APP');
@@ -274,7 +249,7 @@
         mobilePhone = $('#pnm>input').val();
         $.ajax({
             url: initUrl + 'api/v1/agent/checkCode',
-            type: 'get',
+            type: 'GET',
             async: false,
             data: {
                 phone: mobilePhone,
@@ -284,7 +259,7 @@
                 if (data.code == '200') {
                     $.ajax({
                         url: initUrl + 'api/v1/agent/checkPhone',
-                        type: 'get',
+                        type: 'GET',
                         async: false,
                         data: {phone: mobilePhone},
                         success: function(data) {
@@ -298,7 +273,7 @@
                             } else if (data.code == '43002') {
                                 $.ajax({
                                     url: initUrl + 'api/v1/agent/weixinLoginAfterCheckPhone',
-                                    type: 'get',
+                                    type: 'GET',
                                     data: {
                                         phone: mobilePhone,
                                         weixinOpenId: localStorage.getItem('wxOpenId'),
@@ -317,29 +292,15 @@
                                             $('#ignore').click(function() {
                                                 $(location).attr('href', '../weixin2/pages/index.jsp');
                                             });
-                                            $('#next').click(function() {
-                                                if ($(this).html() == '完成') {
-                                                    branchCode();
-                                                }
+                                            $('#next').on('click', function() {
+                                                branchCode();
                                             });
                                             $('#addAgent').on('click', function() {
-                                                $.get(initUrl+'api/v1/mine/myCompany/'+localStorage.getItem('memberID'),function (data) {
-                                                    if(data.code==200){
-                                                        var thisUserState;
-                                                        if(data.data.userType==2){
-                                                            thisUserState=1;
-                                                        }else if(data.data.userType==1&&data.data.state!='4'){
-                                                            thisUserState=1;
-                                                        }else{
-                                                            thisUserState=-1;
-                                                        }
-                                                        if (thisUserState >= 0) {
-                                                            showTips('您已有公司正在审核中，请勿重复添加认证');
-                                                        } else {
-                                                            $(location).attr('href', '../identify/identifyadd.jsp');
-                                                        }
-                                                    }
-                                                });
+                                                if (localStorage.getItem('userState') >= 0) {
+                                                    showTips('您已有公司正在审核中，请勿重复添加认证');
+                                                } else {
+                                                    $(location).attr('href', '../identify/identifyadd.jsp?memberId=' + memberId);
+                                                }
                                             });
                                         }
                                     },
@@ -414,23 +375,11 @@
                             }
                         });
                         $('#addAgent').on('click', function() {
-                            $.get(initUrl+'api/v1/mine/myCompany/'+localStorage.getItem('memberID'),function (data) {
-                                if(data.code==200){
-                                    var thisUserState;
-                                    if(data.data.userType==2){
-                                        thisUserState=1;
-                                    }else if(data.data.userType==1&&data.data.state!='4'){
-                                        thisUserState=1;
-                                    }else{
-                                        thisUserState=-1;
-                                    }
-                                    if (thisUserState >= 0) {
-                                        showTips('您已有公司正在审核中，请勿重复添加认证');
-                                    } else {
-                                        $(location).attr('href', '../identify/identifyadd.jsp');
-                                    }
-                                }
-                            });
+                            if (localStorage.getItem('userState') >= 0) {
+                                showTips('您已有公司正在审核中，请勿重复添加认证');
+                            } else {
+                                $(location).attr('href', '../identify/identifyadd.jsp?memberId=' + memberId);
+                            }
                         });
                     } else {
                         showTips(data.msg || '注册失败');
@@ -441,5 +390,23 @@
                 }
             });
         }
+    }
+    if (member == 1) {
+        pageStatus(2);
+        $('#ignore').click(function() {
+            $(location).attr('href', '../weixin2/pages/index.jsp');
+        });
+        $('#next').click(function() {
+            if ($(this).html() == '完成') {
+                branchCode();
+            }
+        });
+        $('#addAgent').on('click', function() {
+            if (localStorage.getItem('userState') >= 0) {
+                showTips('您已有公司正在审核中，请勿重复添加认证');
+            } else {
+                $(location).attr('href', '../identify/identifyadd.jsp?memberId=' + memberId);
+            }
+        });
     }
 });

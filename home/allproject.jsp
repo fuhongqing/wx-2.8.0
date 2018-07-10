@@ -1,4 +1,4 @@
-﻿<%@ page pageEncoding="utf-8" %>
+<%@ page pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +8,13 @@
     <link href="http://www.ehaofang.com/img/ef.ico" type="image/x-icon" rel="shortcut icon">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="less/allproject.css?v=201815121244">
-    <script src="js/setting.js?v=201825121244"></script>
+    <script src="js/setting.js?v=201815121244"></script>
     <script src="static/fastclick.min.js?v=201815121244"></script>
 </head>
 <body>
 <div class="page_allproject" id="page_index">
     <div class="header">
-        <a class="back" id="back" href="javascript:;" onclick="history.go(-1)"></a>
+        <!--<a class="back" id="back" href="javascript:;" onclick="history.go(-1)"></a>-->
         <div class="title">全部楼盘</div>
         <!--<div id="search_top" class="pull-right">-->
         <!--<img src="img/ic_search_black@2x.png" style="width: .85rem;height: .85rem"/>-->
@@ -45,7 +45,7 @@
                     <img src="img/ic_filter_arr@2x.png" height="12" width="18"/></span>
                 </div>
                 <div class="filter_item_box">
-                    <span class="filter_item_txt">在售</span>
+                    <span class="filter_item_txt">售卖</span>
                     <img src="img/ic_filter_arr@2x.png" height="12" width="18"/></span>
                 </div>
                 <div class="filter_item_box filter_item_box-img" style="width: 15%">
@@ -55,7 +55,7 @@
             </div>
             <div class="check_box_ul">
                 <div class="value_label_box">
-                    <input type="radio" name="houseType" checked value="" id="type_item0">
+                    <input type="radio" name="houseType" value="" id="type_item0">
                     <label class="value_label" for="type_item0">
                         <div class="value_title">类型</div>
                         <div class="value_img"><img src="img/ic_filter_check@2x.png" alt=""></div>
@@ -98,7 +98,7 @@
                 </div>
             </div>
             <div class="check_box_ul">
-                <div class="value_label_box"><input type="radio" checked name="salePriceLevel" value=""
+                <div class="value_label_box"><input type="radio" name="salePriceLevel" value=""
                                                     id="price_item1">
                     <label class="value_label" for="price_item1">
                         <div class="value_title">总价</div>
@@ -167,21 +167,21 @@
             </div>
             <div class="check_box_ul" id="getCityList">
                 <div class="value_label_box">
-                    <input type="radio" name="cityID" checked value="" id="area_item0">
+                    <input type="radio" name="cityID" value="" id="area_item0">
                     <label class="value_label" for="area_item0">
                         <div class="value_title">区域</div>
                         <div class="value_img"><img src="img/ic_filter_check@2x.png" alt=""></div>
                     </label>
                 </div>
             </div>
-            <div class="check_box_ul ">
+            <div class="check_box_ul">
                 <div class="value_label_box"><input type="radio" name="sellState" value=""
                                                     id="sale_item0">
                     <label class="value_label" for="sale_item0">
                         <div class="value_title">售卖</div>
                         <div class="value_img"><img src="img/ic_filter_check@2x.png" alt=""></div>
                     </label></div>
-                <div class="value_label_box"><input type="radio" class="saleType" name="sellState" value="3"
+                <div class="value_label_box"><input type="radio" name="sellState" value="3"
                                                     id="sale_item1">
                     <label class="value_label" for="sale_item1">
                         <div class="value_title">在售</div>
@@ -207,14 +207,14 @@
                         <div class="value_title">默认排序</div>
                         <div class="value_img"><img src="img/ic_filter_check@2x.png" alt=""></div>
                     </label></div>
-                <div class="value_label_box">
-                    <input type="radio" name="dis" value="1" id="dis_item1">
+                <div class="value_label_box"><input type="radio" name="dis" value="1"
+                                                    id="dis_item1">
                     <label class="value_label" for="dis_item1">
                         <div class="value_title">距离从近到远</div>
                         <div class="value_img"><img src="img/ic_filter_check@2x.png" alt=""></div>
                     </label></div>
-                <div class="value_label_box">
-                    <input type="radio" name="dis" value="2" id="dis_item2">
+                <div class="value_label_box"><input type="radio" name="dis" value="2"
+                                                    id="dis_item2">
                     <label class="value_label" for="dis_item2">
                         <div class="value_title">距离从远到近</div>
                         <div class="value_img"><img src="img/ic_filter_check@2x.png" alt=""></div>
@@ -242,6 +242,6 @@
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=CB2ede775afeb6e413abd40261396a69"></script>
-<script type="text/javascript" src=js/allproject.js?v=201826121032></script>
+<script type="text/javascript" src=js/allproject.js?v=201815121244></script>
 </body>
 </html>

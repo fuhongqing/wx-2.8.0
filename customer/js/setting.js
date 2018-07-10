@@ -1,4 +1,4 @@
-var rootURL ='http://jjrtest.ehaofang.com/';
+var rootURL ='http://agentapi.ehaofang.net/';
 document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';
 var userType =localStorage.getItem('userType');
 window.confirm = function (message) {

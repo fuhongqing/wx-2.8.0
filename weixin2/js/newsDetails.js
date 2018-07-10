@@ -10,7 +10,7 @@ $(function(){
 	    }//获取日期标签;
 	
 	$.get(newsdataStr+"/dynamic/v2/"+proID,function(data){
-		//console.log(data);
+		console.log(data);
 //			var unixTimestamp = check(data.data.CreatTime);
 //			if(check(data.data.ImgUrl) != ""){
 //				imgarr = check(data.data.ImgUrl).split(",");
