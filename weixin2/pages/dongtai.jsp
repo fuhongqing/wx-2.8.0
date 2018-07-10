@@ -25,10 +25,10 @@
 		</style>
 	</head>
 	<body>
-	<div class="top">
-		<div onclick="history.back()" class="backImg"><img style="width: .43rem;height: .77rem;" src="../img/login_btn_top_back@2x.png" alt=""></div>
-		<div class="title">楼盘动态</div>
-	</div>
+		<div class="top" onclick="history.back()">
+			<img src="../img/top_back.png" alt="">
+			<span>楼盘动态</span>
+		</div>
 
 		<li class="buildNews1 clearfix">
 

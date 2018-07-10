@@ -1,10 +1,9 @@
 $(function() {
     var searchArr=location.search.slice(1).split('&');
-    var identyInfoId=searchArr[0].split('=')[1];//认证id  1;//
+    var identyInfoId=searchArr[0].split('=')[1];//认证id  12;//
     var identifyState=searchArr[1].split('=')[1];//1;  1审核中 2驳回 3通过
     var userType=searchArr[2].split('=')[1];//1游客
     var memberId=searchArr[3].split('=')[1];//经纪人id 225849;//
-    var isFold=false;//是否收起
     localStorage.setItem('memberIdApp',memberId);
     function showBigImg(imgSrc) {
         $('.imgModal').fadeIn();
@@ -12,8 +11,6 @@ $(function() {
     }
     //获取详情
     if(userType==2){
-        $('#detailPage').css('background','#F8F8F8');
-        $('.foldTile,#branchDet').show();
         $.get(initUrl+'api/v1/mine/myCompanyInfo/'+memberId,function (data) {
             if(data.code=='200'){
                 $('.step1').hide();
@@ -27,14 +24,11 @@ $(function() {
                 var licenceHtml='';
                 var detailHtml=`
                 <li><span class="key">公司全称:</span><span>${detailData.companyName}</span></li>
-                <li><span class="key">公司办公地址:</span><span>${detailData.cityName+detailData.boroughName+detailData.address}</span></li>
+                <li><span class="key">公司办公地址:</span><span>${detailData.address}</span></li>
                 <li><span class="key">公司负责人:</span><span>${detailData.businessEntity}</span></li>
                 <li><span class="key">负责人电话:</span><span>${detailData.businessEntityPhone}</span></li>
                `;
                 $('#detailUl').html(detailHtml);
-                $('#companyInfo>.comName').html(detailData.companyName);//公司
-                $('#branchDet>.branchName').html(detailData.branchName);//分行
-                $('#branchDet>.branchNum').html(detailData.branchCode);//分行码
                 //营业执照
                 if(detailData.images!=''){
                     $.each(urlData,function (i) {
@@ -46,10 +40,6 @@ $(function() {
                            `;
                     });
                     $('#licenceLi>span').after(licenceHtml);
-                }
-                if(urlData.length>2){
-                    $('#licenceLi>span.key').css('width','.66rem');
-                    $('#licenceLi>div:nth-child(5),#licenceLi>div:nth-child(8)').css('margin-left','.7rem');
                 }
             }else{
                 showTips(data.msg||'获取详情失败');
@@ -81,14 +71,11 @@ $(function() {
                     $('#userPhone').val(detailData.businessEntityPhone);
                     var detailHtml=`
                 <li><span class="key">公司全称:</span><span>${detailData.companyName}</span></li>
-                <li><span class="key">公司办公地址:</span><span>${detailData.cityName+detailData.boroughName+detailData.address}</span></li>
+                <li><span class="key">公司办公地址:</span><span>${detailData.address}</span></li>
                 <li><span class="key">公司负责人:</span><span>${detailData.businessEntity}</span></li>
                 <li><span class="key">负责人电话:</span><span>${detailData.businessEntityPhone}</span></li>
                `;
                     $('#detailUl').html(detailHtml);
-                    $('#companyInfo>.comName').html(detailData.companyName);//公司
-                    $('#branchDet>.branchName').html(detailData.branchName);//分行
-                    $('#branchDet>.branchNum').html(detailData.branchCode);//分行码
                     localStorage.setItem('cityNameApp',detailData.cityName);//城市名
                     localStorage.setItem('infoIdApp',detailData.id);//信息id
                     localStorage.setItem('boroughNameApp',detailData.boroughName);//区域名
@@ -117,10 +104,6 @@ $(function() {
                         });
                         $('#licenceLi>span').after(licenceHtml);
                         $('#upLoad>span').after(modifyCodeHtml);
-                        if(urlData.length>2){
-                            $('#licenceLi>span.key').css('width','.66rem');
-                            $('#licenceLi>div:nth-child(5),#licenceLi>div:nth-child(8)').css('margin-left','.7rem');
-                        }
                     }
                     //审核流程展示
                     $('#submitTime').html(detailData.createTime);
@@ -163,14 +146,14 @@ $(function() {
             $('.imgModal').hide();
         }
     });
-    // $('#detailPage>header').on('click', '.backImg', function() {
-    //     if (isIPhone) {
-    //         alert();
-    //     }
-    //     if (isAndroid) {
-    //         AndroidWebView.back();
-    //     }
-    // });
+    $('#detailPage>header').on('click', '.backImg', function() {
+        if (isIPhone) {
+            alert();
+        }
+        if (isAndroid) {
+            AndroidWebView.back();
+        }
+    });
     $('#modifyBtn').click(function() {
         $('#detailPage').hide();
         $('#modifyPage').show();
@@ -188,20 +171,5 @@ $(function() {
     $('#mapSubmit').click(function() {
         $('#companyAttr').val($('#imgDiv>span').html() + $('#inputDiv>input').val());
         $('#modifyPage').show();
-    });
-    //收起
-    $('.foldTile').on('click','.foldBtn',function () {
-        isFold=!isFold;
-        if(isFold){
-            $('#detailUl,#licenceLi').hide();
-            $('.passSignImg').hide();
-            $('#companyInfo').show();
-            $('.foldBtn').text('展开');
-        }else{
-            $('#detailUl,#licenceLi').show();
-            $('.passSignImg').show();
-            $('#companyInfo').hide();
-            $('.foldBtn').text('收起');
-        }
     });
 });

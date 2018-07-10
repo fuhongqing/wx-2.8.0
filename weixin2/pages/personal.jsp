@@ -16,32 +16,23 @@
 		<link rel="stylesheet" type="text/css" href="../css/mine.css?v=2018190511"/>
 	</head>
 	<body>
-		<div class="top">
-			<div onclick="history.back()" class="backImg"><img style="width: .43rem;height: .77rem;" src="../img/login_btn_top_back@2x.png" alt=""></div>
-			<div class="title">个人资料</div>
+		<div class="top"> 
+			<a class="back">返回</a>
+			<span>个人资料</span>
 		</div>
 		<div class="editContent">
 			<ul>
-				<li id="editPhotoBox">
-					<img class="getMore" src="../img/login_ic_more_small@2x.png" alt="">
-					<span class="lable">头像</span>
-					<img class="editPhoto" src="../img/person_image.png" />
+				<li id="editPhotoBox">头像
+					<img class="editPhoto" src="../img/man1.png" />
 				</li>
-				<li id="editName">
-					<img class="getMore" src="../img/login_ic_more_small@2x.png" alt="">
-					<span class="lable">真实姓名</span><span class="realName"></span>
-				</li>
-				<li id="editSex">
-					<img class="getMore" src="../img/login_ic_more_small@2x.png" alt="">
-					<span class="lable">性别</span><span class="sex"></span>
-				</li>
-				<li id="editMobile">
-					<img class="getMore" src="../img/login_ic_more_small@2x.png" alt="">
-					<span class="lable">手机号码</span><span class="phoneNum"></span>
-				</li>
+				<li id="editName">真实姓名<i></i><span>--</span></li>
+				<li id="editSex">性别<i></i><span>男</span></li>
+				<li id="editMobile">手机号码<i></i><span></span></li>
+				<li id="companyName">所在公司<b>--</b></li>
+				<li id="storeName">所在门店<b>--</b></li>
+				<li id="storeCode">分行码<span></span></li>
 			</ul>
 		</div>
-		<input type="file" id="loadImg" accept="*/*"/>
 		<div class="warn">
 			请输入您的姓名！
 		</div>
@@ -134,7 +125,7 @@
 		
 		<script src="../js/jquery.min.js" type="text/javascript" ></script>
 		<script src="../js/rem.js?v=201814120937" type="text/javascript" ></script>
-		<!--<script src="../js/fastclick.js" type="text/javascript"></script>-->
+		<script src="../js/fastclick.js" type="text/javascript"></script>
 		<script src="../js/personal.js?v=2018090511" type="text/javascript"></script>
 		<%@ include file="trafficStatistic.jsp"%>
 	</body>

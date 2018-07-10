@@ -42,7 +42,7 @@ button{
     background:url(../img/loading.gif) no-repeat center;
 }
 /*模态框*/
-.inviteModal,.imgModal,.modal,.tipModal,.outModal{
+.inviteModal,.imgModal,.modal,.tipModal{
     display: none;
     position: fixed;
     top: 0;
@@ -71,34 +71,6 @@ button{
     top:50%;
     left:50%;
     transform: translate(-50%,-50%);
-}
-.outToast{
-    width: 2.4rem;
-    height: 1.1rem;
-    background: #FCFCFC;
-    border-radius: .12rem;
-    position: absolute;
-    z-index: 500;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
-.outToast>div:first-child{
-    height: .64rem;
-    padding: .1rem .2rem;
-    text-align: center;
-    border-bottom: .01rem solid #F0F0F0;
-}
-.outToast>div:last-child{
-    height: .45rem;
-    line-height: .45rem;
-    color: #08C4A3;
-    display: flex;
-}
-.outToast>div:last-child>div{
-    text-align: center;
-    width: 50%;
-    font-size: 17px;
 }
 .imgToast{
     position: absolute;

@@ -29,10 +29,10 @@
 		</style>
 	</head>
 	<body>
-	<div class="top">
-		<div onclick="history.back()" class="backImg"><img style="width: .43rem;height: .77rem;" src="../img/login_btn_top_back@2x.png" alt=""></div>
-		<div class="title">帮助与反馈</div>
-	</div>
+		<div class="top"> 
+			<a class="back">返回</a>
+			<span>帮助与反馈</span>
+		</div>
 		<div class="helpList">
 				<li id="userhelp">新手指引<i></i></li>
 				<p>常见问题</p>

@@ -94,11 +94,6 @@
                 var commissionChecksData=data.data.commissionChecks;//申佣审批记录
                 var contactHtml=`<a href="tel:${commonInfoData[0].saleUserPhone?commonInfoData[0].saleUserPhone:''}">联系案场</a>`;
                 $('#contactCase').html(contactHtml);
-                if(!commonInfoData[0].saleUserPhone){
-                    $('#contactCase').on('click',function () {
-                        showTips('无相关信息');
-                    });
-                }
                 $('#propertyNum').html(commonInfoData[0].propertyName+' '+commonInfoData[0].buildingName+'-'+commonInfoData[0].unitName+'-'+commonInfoData[0].roomNumber);
                 //客户分析
                 var customAnaHtml='';
@@ -463,42 +458,16 @@
                     var followData=data.data;
                     var followHtml='';
                     $('#folllowNum').html('全部跟进 ('+followData.length+')');
-                    var recordImg='';
-                    var audioHtml='';
-                    var isShowRecord=false;
                     $.each(followData,function (i) {
-                        if(followData[i].recordFile){
-                            isShowRecord=true;
-                            audioHtml=`<audio style="display: none" controls  src="${followData[i].recordFile}"></audio>`;
-                        }
-                        switch (followData[i].followStr){
-                            case '微信':
-                                recordImg='img/ic_wechat@2x.png';
-                                break;
-                            case '面谈':
-                                recordImg='img/ic_talk@2x.png';
-                                break;
-                            case '电话':
-                                recordImg='img/ic_phone_follow.png';
-                                break;
-                            default:
-                                break;
-                        }
                         followHtml+=`
                     <div class="follow-item">
                         <div><img style="width: .26rem;" src="${followData[i].picture?followData[i].picture:'img/profile_img_head_man@2x.png'}" alt=""></div>
                         <div class="content">
                             <div>
                                 <div style="float: right;color: #999999">${followData[i].followTime}</div>
-                                <div style="font-size: 15px;font-weight: bold">
-                                    <span>${followData[i].name}</span><img style="width: .17rem;height: .17rem;margin-left: .15rem;${isShowRecord?'':'display:none'}" src="${recordImg}" alt="">  
-                                </div>
+                                <h4 style="font-size: 15px">${followData[i].name}</h4>
                             </div>
                             <div class="tip">${followData[i].text}</div>
-                            <div class="record" style="${isShowRecord?'':'display:none'}">
-                                <img style="width: .15rem;height: .15rem;margin-right: .1rem" src="img/ic_record@2x.png" alt=""><span>${followData[i].keepTime?followData[i].keepTime:''}</span> 
-                            </div>
-                            ${audioHtml}   
                         </div>
                     </div>
                     `;
@@ -514,64 +483,6 @@
         });
     }
     followList();
-    //录音播放
-    var recordImgArr=['img/ic_recordtwo@2x.png','img/ic_recordone@2x.png','img/ic_record@2x.png'];
-    var recordTimer=null;
-    var isPlay=false;
-    $('#follow-lists').on('click','.record',function () {
-        var count=0;
-        isPlay=!isPlay;
-        if(isPlay){
-            //$(this).next()[0].play();
-            recordTimer=setInterval(function () {
-                if(count>=recordImgArr.length){
-                    count=-1;
-                }else{
-                    $(this).children('img').attr('src',recordImgArr[count]);
-                }
-                count++;
-                if($(this).next()[0].ended){
-                    clearInterval(recordTimer);
-                    recordTimer=null;
-                    $(this).children('img').attr('src','img/ic_record@2x.png');
-                }
-            }.bind(this),500);
-        }else{
-            $(this).next()[0].pause();
-        }
-    });
-    //跟进
-    var thismemberId=localStorage.getItem('memberID');//	是	int	经纪人ID  12
-    $('#subFollow').on('click',function () {
-        var thistext=$('#edit').val();//	是	string	跟进内容
-        var date= new Date().toLocaleDateString().replace(new RegExp('/','g'),'-');
-        var time= new Date().toLocaleTimeString().slice(2);
-        var now= date+' '+time.substring(0,time.lastIndexOf(':'));
-        $.ajax({
-            url:rootURL+'api/v1/mine/saveFollow',
-            type:'POST',
-            data:{
-                memberId:thismemberId,//	是	int	经纪人ID
-                customerId	:customerId,//是	int	客户ID
-                followTime:now,//	是	Date	跟进时间(如:2018-06-12 21:26)
-                text:thistext,//	是	string	跟进内容
-                followType:4//	是	int	跟进方式码(1面谈 2微信 3电话 4其他)
-            },
-            success:function (data) {
-                if(data.code==200){
-                    showTips('添加成功');
-                    $('#cusDetailPage').show();
-                    $('#followEditePage').hide();
-                    followList();
-                }else{
-                    showTips(data.msg||'添加失败')
-                }
-            },
-            error:function () {
-                showTips('网络出错了');
-            }
-        })
-    });
     $('#reportCard,.reportDetail').on('click',function () {
         $('#reportSec,#proDetailPage').show();
         $('#cusDetailPage,#visitedSec,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro').hide();
@@ -605,5 +516,37 @@
     $('#proDetailPage>header').on('click','.back',function () {
         $('#cusDetailPage').show();
         $('#proDetailPage').hide();
+    });
+    //跟进
+    var thismemberId=localStorage.getItem('memberID');//	是	int	经纪人ID  12
+    $('#subFollow').on('click',function () {
+        var thistext=$('#edit').val();//	是	string	跟进内容
+        var date= new Date().toLocaleDateString().replace(new RegExp('/','g'),'-');
+        var time= new Date().toLocaleTimeString().slice(2);
+        var now= date+' '+time.substring(0,time.lastIndexOf(':'));
+        $.ajax({
+            url:rootURL+'api/v1/mine/saveFollow',
+            type:'POST',
+            data:{
+                memberId:thismemberId,//	是	int	经纪人ID
+                customerId	:customerId,//是	int	客户ID
+                followTime:now,//	是	Date	跟进时间(如:2018-06-12 21:26)
+                text:thistext,//	是	string	跟进内容
+                followType:4//	是	int	跟进方式码(1面谈 2微信 3电话 4其他)
+            },
+            success:function (data) {
+                if(data.code==200){
+                    showTips('添加成功');
+                    $('#cusDetailPage').show();
+                    $('#followEditePage').hide();
+                    followList();
+                }else{
+                    showTips(data.msg||'添加失败')
+                }
+            },
+            error:function () {
+                showTips('网络出错了');
+            }
+        })
     });
 });

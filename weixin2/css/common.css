@@ -27,19 +27,16 @@ element {
     background: #fff;
     z-index: 5;
 }
-.top .backImg{
-    height:2rem;
-    width:2rem;
+.top span{font-weight:600;}	
+.top img{
     position: absolute;
-    left: 0;
-    top: 0;
+    width: 9px;
+    left: 14px;
+    top: 15px;
 }
-.proBack,.editback,.helpback,.chooseback{display:inline-block;height:0.9rem;width:30px;position: absolute;left:0;top:0.5rem;
+.back,.proBack,.editback,.helpback,.chooseback{display:inline-block;height:0.9rem;width:30px;position: absolute;left:0;top:0.5rem;
 	background:url(../img/top_back.png) no-repeat center center;background-size: contain;}
 .proBack{font-size:14px;line-height:1rem;width:35px;padding-left:10px;margin-left:8px;background-position-x: left;}
-#loadImg{
-    display: none;
-}
 /*----------footer---------*/
 #footer-item {
     position: fixed;

@@ -26,6 +26,9 @@
     $("#reward,#qiandao,#level,#jifen,#guanzhu").on("click", function () {
         $alert.init();
     });
+    $("#setting").on("click", function () {
+        window.location.href = "setting.jsp";
+    });
     $("#personal").on("click", function () {
         window.location.href = "personal.jsp";
     });
@@ -50,30 +53,18 @@
                     var identyState=data.data.state;//认证状态  1提交 2驳回 3通过
                     $(location).attr('href','../../identify/identifydetail.jsp?infoId='+identyInfoId+'&state='+identyState);
                 }else{
-                    $('.outModal').show();
+                    $(location).attr('href','../../identify/identifyadd.jsp');
                 }
             }
         });
-    });
-    //绑定分行
-    $('#outModCancle').on('click',function () {
-        $(location).attr('href','../../login/login.jsp?member=1');
-    });
-    //添加认证
-    $('#outModSure').on('click',function () {
-        $(location).attr('href','../../identify/identifyadd.jsp');
-    });
-    //点击非目标区域，弹框隐藏
-    $(document).click(function(e){
-        var _con=$('.outToast');//设置点击，展示目标区域
-        if(!_con.is(e.target)&&_con.has(e.target).length==0){
-            $('.outModal').hide();
-        }
     });
     $("#helpLi").on("click", function () {
         window.location.href = "help.jsp";
     });
     $("#inviteLi,#poster").on("click", function () {
         window.location.href = "../../identify/invite.jsp?userName=" + thisfullName;
+    });
+    $(".avator").on("click", function () {
+        window.location.href = "personal.jsp";
     });
 });

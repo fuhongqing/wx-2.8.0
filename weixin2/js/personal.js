@@ -1,105 +1,100 @@
-﻿$(function(){
-		//FastClick.attach(document.body);
+﻿	$(function(){
+		FastClick.attach(document.body);
         //个人头像
         if(thispicture){
-            $('#editPhotoBox>img.editPhoto').attr('src',thispicture);
+            $('#editPhotoBox>img').attr('src',thispicture);
         }
       
     	if(thissex == "2"){
-    		$("#editSex span.sex").html("女");
-    		$("#editSex span.sex").attr("value","2");
-
+    		$("#editSex span").html("女");
+    		$("#editSex span").attr("value","2");
+			$("#editPhotoBox img").attr("src","../img/woman1.png");
+    		
     	}else if(thissex == "1"){
-    		$("#editSex span.sex").html("男");
-    		$("#editSex span.sex").attr("value","1");
+    		$("#editSex span").html("男")
+    		$("#editSex span").attr("value","1")
+			$("#editPhotoBox img").attr("src","../img/man1.png");
     	}else{
-    		$("#editSex span.sex").html("男");
-    		$("#editSex span.sex").attr("value","0");
-    	}
-    	$("#editName span.realName").html(thisfullName);
-    	$("#editMobile span.phoneNum").html(thisphone);
-
+    		$("#editSex span").html("男")
+    		$("#editSex span").attr("value","0")
+			$("#editPhotoBox img").attr("src","../img/man1.png");
+    	};
+    	$("#editName span").html(thisfullName);
+    	$("#editMobile span").html(thisphone);
+    	
+    	
+    	
+	    if (userType == "2"){
+    	
+	    	if(thisagencyName.length <= 15){
+	    		$(".editContent ul #companyName b").css("lineHeight","2rem")
+	    		$("#companyName b").html(thisagencyName);
+	    	}else{
+	    		$(".editContent ul #companyName b").css("lineHeight","1rem")
+	    		$("#companyName b").html(thisagencyName);
+	    	}
+	    	if(thisbranchName.length <= 15){
+	    		$(".editContent ul #storeName b").css("lineHeight","2rem")
+	    		$("#storeName b").html(thisbranchName);
+	    	}else{
+	    		$(".editContent ul #storeName b").css("lineHeight","1rem")
+	    		$("#storeName b").html(thisbranchName);
+	    	}
+	//查看门店二维码  
+			$("#storeCode span").html(thisagencyCode);
+	
+		}else{
+	    		$(".editContent ul #storeName b").css("lineHeight","2rem")
+	    		$("#storeName b").html("<a class='visitor'>去绑定分行</a>");
+	    		$(".editContent ul #companyName b").css("lineHeight","2rem")
+	    		$("#companyName b").html("<a class='visitor'>去绑定分行</a>");
+	    		$("#storeCode span").css("fontSize","14px");
+	    		$("#storeCode span").html("<a class='visitor'>去绑定分行</a>");
+				$(".visitor").on("touchstart",function(){
+					var con;
+					con=confirm("是否去绑定分行码查看？"); //在页面上弹出对话框
+					if(con==true){
+						window.location.href = "../../login/login.jsp?member=1";
+					}
+					
+				})
+		}
+		
+		
+	    //console.log(thismemberID)
+	    if ($("#editSex span").html() == "女") {
+			$("#editPhotoBox img").attr("src","../img/woman1.png");
+		}else{
+			$("#editPhotoBox img").attr("src","../img/man1.png");
+		}
 			
 		$(".back").click(function(){
 			window.history.back();
-		});
+		})
 		
 		$(".editback").on("click",function(){
 			//$(".editWrap").css("display","none").animate({left:"30rem"},"slow");
-			$(".editWrap").animate({left: "19rem"}, 300 );
+			$(".editWrap").animate({left: "19rem"}, 300 )
 			setTimeout(function(){
 				$(".editWrap").css("display","none");
 			},200);
-		});//取消修改
-		//修改头像
-		$('#editPhotoBox').on('click',function () {
-				$('#loadImg').click();
-		});
-		$('#loadImg').on('change',function(e) {
-				var files=this.files[0];
-				var formData = new FormData();
-				if (files.size > 5 * 1024 * 1024) {
-					warn("单个文件大小不可超过5M");
-				}else{
-					formData.append('files', files);
-				}
-				$.ajax({
-					url: 'http://www.ehaofang.com:8888/publicshow/qiniuUtil/fileToQiniu',
-					type: 'POST',
-					data: formData,
-					contentType: false,
-					processData: false,
-					cache: false,
-					async: false,
-					success: function(data) {
-						console.log(data);
-						if (data.statas == 'true') {
-							warn(data.message);
-							var thisImgUrl=data.pathUrls;
-							// imgNames.push(data.fileNames);
-							$.ajax({
-								url:dataStr+'v1/agent/updatePicture',
-								type:'PUT',
-								contentType:"application/json",
-								data:JSON.stringify({
-									picture:imgurlStr+thisImgUrl,//	是	string	头像url
-									id:thismemberID//	是	Long	经纪人id
-								}),
-								success:function (data) {
-									if(data.code==200){
-										window.location.reload();
-									}
-								},
-								error:function (error) {
-									console.log(error);
-								}
-							})
-
-						} else if (data.statas == 'false') {
-							warn(data.message||'图片上传失败');
-						}
-					},
-					error: function(jqXHR) {
-						console.log(JSON.stringify(jqXHR));
-					}
-				});
-			});
-		//修改姓名
-	    var oldName=$("#editName span.realName").html();
+		})//取消修改
+		
+//修改姓名				
 		$("#editName").on("click",function(){
 			
-			$("#nameID").val(oldName);
+			$("#nameID").val($("#editName span").html());
 			$("#nameWrap").css("display","block").animate({left: "0"}, 300 );			
-		});
+		})
 		$("#nameID").on("keyup",function(){
-			if($(this).val()!=oldName){
+			if($(this).val().length >= 2){
 				$("#nameWrap button").addClass("saveName");
 				$("#clearName").css("display","block");
 			}else{
 				$("#nameWrap button").removeClass("saveName");
 				$("#clearName").css("display","none");
 			}
-		});
+		})
 		
 		
 		$(".edittop button").on("click",function(){
@@ -108,11 +103,17 @@
 //此处书写保存名字的ajax；
 				updateMember(6,'name',$("#nameID").val())
 			}
-		});
+		})
 		
 		
 		function updateMember(Type,Name,Value){
-
+//					id:thismemberID,	//是	Long	经纪人id
+//					deviceToken	//是	string	设备标识 updateType 为1 时必传
+//					userPassword	//是	string	经纪人密码 updateType 为4 时必传
+//					sex	//是	Integer	性别（0-未知，1-男，2-女） updateType 为5 时必传
+//					name	//是	string	经纪人名字 updateType 为6 时必传
+//					updateType:Type	//是	Integer	// 1 更新设备标识 2 经纪人注销 3 经纪人退出登录 4 经纪人修改密码 5 更新性别 6 更新姓名
+			
 			var updateMemberParams = {
 				id:thismemberID,
 //				Name:Value,
@@ -133,16 +134,21 @@
 							$(".loaderWrap").css("display","none");
 //姓名更新							
 							if(Name == 'name'){
-								$("#editName span.realName").html($("#nameID").val());
+								$("#editName span").html($("#nameID").val());
 							}
 //性别更新							
 							if(Name == 'sex'){
-								$("#editSex span.sex").text($(".changeSexActive").html());
-								$("#editSex span.sex").attr("value",$(".changeSexActive").attr("value"));
+								$("#editSex span").text($(".changeSexActive").html());
+								$("#editSex span").attr("value",$(".changeSexActive").attr("value"));
+								if ($("#editSex span").html() == "女") {
+									$("#editPhotoBox img").attr("src","../img/woman1.png");
+								}else{
+									$("#editPhotoBox img").attr("src","../img/man1.png");
+								}
 							}
 							
 							
-							$(".editWrap").animate({left: "19rem"}, 300 );
+							$(".editWrap").animate({left: "19rem"}, 300 )
 							setTimeout(function(){
 								$(".editWrap").css("display","none");
 							},200);
@@ -151,6 +157,7 @@
 					}else{
 						$(".loaderWrap").css("display","block");
 						setTimeout(function(){
+							//$(".loaderBox").html("<div class='loader'><div class='right'></div></div>操作失败！");
 							$(".loaderWrap").css("display","none");
 							warn("操作失败！");
 						},500);
@@ -167,20 +174,20 @@
 			$("#editNum").val("");
 			$("#nameWrap button").removeClass("saveName");
 			$(this).css("display","none");
-		});
+		})
 		
 //修改性别
 
 		$("#editSex").on("click",function(){			
-			if ($("#editSex span.sex").html() == "男") {
+			if ($("#editSex span").html() == "男") {
 				$(".changeSex p[value=1]").addClass("changeSexActive");
-			} else if($("#editSex span.sex").html() == "女"){
+			} else if($("#editSex span").html() == "女"){
 				$(".changeSex p[value=2]").addClass("changeSexActive");
 			}else{
 				$(".changeSex p").removeClass(".changeSexActive");
-			}
+			};
 			$("#sexWrap").css("display","block").animate({left: "0"}, 300 );			
-		});
+		})
 		$(".changeSex p").on("click",function(){
 			
 			
@@ -191,12 +198,12 @@
 				updateMember(5,'sex',$(".changeSexActive").attr("value"));
 			}
 
-		});
+		})
 //修改手机号				
 
 		$("#editMobile").on("click",function(){
 			$("#numberWrap").css("display","block").animate({left: "0"}, 300 );			
-		});
+		})
 		var thisNum = "";
 		$("#getcode").on("click",function(){
 			thisNum = parseInt($(".writePhone input").val());
@@ -228,12 +235,12 @@
 			
 			
 			}
-		});
+		})
 		$("#clearNum").on("click",function(){
 			$("#editNum").val("");
 			thisNum = "";
 			$(this).css("display","none");
-		});
+		})
 		
 		$("#editNum").on("keyup",function(){
 			if($(this).val().length >= 2){
@@ -241,7 +248,7 @@
 			}else{
 				$("#clearNum").css("display","none");
 			}
-		});
+		})
 		
 			var countdown=60; 
 			function settime(val) { 
@@ -265,7 +272,7 @@
 //输入手机验证码				
 		var codelength = "";
 		$(".writeCode input").on("keyup",function(){
-			codelength = $(this).val().length;
+			codelength = $(this).val().length
 			thisNum = parseInt($(".writePhone input").val());
 			if( codelength == 4 && /^1[34578]\d{9}$/.test(thisNum) ){
 				$("#updateNum").css("background","#31B431");
@@ -305,9 +312,9 @@
 								$(".loaderBox").html("<div class='loader'><div class='right'><img src='../img/finish.png' /></div></div>更改成功！")
 								setTimeout(function(){
 									$(".loaderWrap").css("display","none");
-									$("#editMobile span.phoneNum").html($(".writePhone input").val());
+									$("#editMobile span").html($(".writePhone input").val());
 									
-									$(".editWrap").animate({left: "19rem"}, 300 );
+									$(".editWrap").animate({left: "19rem"}, 300 )
 									setTimeout(function(){
 										$(".editWrap").css("display","none");
 									},200);
@@ -323,12 +330,27 @@
 				}
 			})
 				
-		});
+		})
 		
 		
 		function warn(word){
 			$(".warn").html(word).fadeIn("fast");
 			setTimeout(function(){$(".warn").fadeOut("normal");},2000)
 		}
-
-});
+//		$("#storeCode").on("click",function(){
+//			$("#QRcodeWrap").css("display","block").animate({left: "0"}, 300 );			
+//			$.post(dataStr+"/login/weiXinUrl",{parentId:thisparentID,branchId:thisbranchID},function(data){
+//				//console.log(data)
+//				$(".storeCodepic img").attr("src",check(data.url));
+//			})
+//		})
+//		
+//		
+//		$("#cancelQRcode").on("click",function(){
+//			$(".editWrap").animate({left: "19rem"}, 300 )
+//			setTimeout(function(){
+//				$(".editWrap").css("display","none");
+//			},200);
+//		})
+		 
+	})

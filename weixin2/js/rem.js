@@ -19,9 +19,9 @@ function getSize(){
 
 		oHtml.style.fontSize = screenWidth/640*40 +'px';
 
-	}
+	}	
 
-}
+};
 
 window.onresize = function(){
 
@@ -54,11 +54,16 @@ function check(Num){
 }
 
    var hrdataStr = "http://hr.ehaofang.org/api/";
+   
    var newsdataStr = "http://xmjyapi.ehaofang.org/api";
    var imgurlStr = "http://images.ehaofang.com/";
-   var dataStr = 'http://jjrtest.ehaofang.com/api/';
 
-var thismemberID =localStorage.getItem('memberID');//197993;//
+   // var dataStr = "http://agentapi.ehaofang.net/api/";
+   var dataStr = 'http://jjrtest.ehaofang.com/api/';
+	// var dataStr2 = "http://weixintest.ehaofang.com/efapp2";
+   var dataStr3 = "http://jjrtest.ehaofang.net/efapp2";//2.5.3测试接口
+
+var thismemberID =localStorage.getItem('memberID');//197993
 
 
 var thisparentID = "";

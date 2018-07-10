@@ -12,6 +12,7 @@
 <body>
 <div class="page">
     <div id="personInfo">
+        <div id="setting"><img style="width: .2rem;" src="../img/me_ic_settings@2x.png" alt=""></div>
         <div class="avator">
             <img id="personImg" style="width: .8rem;height: .8rem;" src="../img/profile_img_head_man@2x.png" alt="">
             <ul>
@@ -101,15 +102,6 @@
             <p>我的</p>
         </li>
     </ul>
-</div>
-<div class="outModal">
-    <div class="outToast">
-        <div>您还未加入任何渠道公司，无法进行 更多内容查看哦。</div>
-        <div>
-            <div id="outModSure">添加认证</div>
-            <div id="outModCancle">绑定分行码</div>
-        </div>
-    </div>
 </div>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/rem.js?v=201845121244"></script>

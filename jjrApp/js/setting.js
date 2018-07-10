@@ -1,4 +1,4 @@
-var initUrl='http://agentapi.ehaofang.net/';//http://agentapi.ehaofang.net/';//http://192.168.1.128:8888/';//'http://agent2.ehaofang.com/';
+var initUrl='http://jjrtest.ehaofang.com/';//http://agentapi.ehaofang.net/';//http://192.168.1.128:8888/';//'http://agent2.ehaofang.com/';
 var imgUrl = "http://images.ehaofang.com/";//初始图片地址
 //根字体大小设置
 document.documentElement.style.fontSize = document.documentElement.clientWidth / 3.75 + 'px';

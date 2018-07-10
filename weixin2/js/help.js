@@ -50,6 +50,14 @@
     $(".helpItem").on("click", function() {
         window.location.href = "help.jsp";
     });
+    $(".firendItem").on("click", function() {
+        window.location.href = "../../identify/invite.jsp?memberId="+ thismemberID +"&state=0&type=0&userName="+thisfullName;
+    });
+
+    $(".setting").on("click", function() {
+        window.location.href = "setting.jsp";
+    });
+
 
     if(thissex == "2") {
         $("#myphoto img").attr("src", "../img/woman.png");
@@ -65,6 +73,49 @@
     } else {
         $(".mineBox p").html("暂未绑定分行");
     }
+    //判断是否为分行经理
+    if(manageLevel == "1") {
+        $('.employeeItem').hide();
+    } else {
+        $('.employeeItem').show();
+        $('.employeeItem').on("click", function() {
+            window.location.href = "../../home/myEmployee.jsp?memberID=" + thismemberID;
+        });
+
+    }
+    // $.get(dataStr3 + "/login/v2.5.3/certificationCompany?memberId="+thismemberID,function(data) {
+    //     if(data.status == "success") {
+    //         if(data.info.length == 0){
+    //             $("#company").html("<span>未认证</span><i class='nocompanyStatus'></i>");
+    //             $('#company').on("click", function() {
+    //                 window.location.href = "../../identify/identifyadd.jsp?memberId=" + thismemberID;
+    //             });
+    //
+    //         }else{
+    //             if(data.info[0].userState == 2){
+    //                 $("#company").html("<span>"+ data.info[0].agencyName +"</span><i class='companyStatus2'></i>");
+    //             }else if(data.info[0].userState == 1){
+    //                 $("#company").html("<span>被驳回</span><i class='companyStatus1'></i>");
+    //
+    //             }else if(data.info[0].userState == 0){
+    //                 $("#company").html("<span>"+ data.info[0].agencyName +"</span><i class='companyStatus0'></i>");
+    //             }
+    //             $('#company').on("click", function() {
+    //                 window.location.href = "../../identify/identifydetail.jsp?thisName="+ data.info[0].agencyName +"&thisState=" + data.info[0].userState+"&memberId="+ thismemberID;
+    //             });
+    //
+    //         }
+    //     }
+    // }); //
+
+    //setting
+    $("#clearID").on("click", function() {
+        $(".clearIDwrap").fadeIn();
+    });
+
+    $("#cancel").on("click", function() {
+        $(".clearIDwrap").css("display", "none");
+    });
 
     function warn(word) {
         $(".warn").html(word).fadeIn("fast");
@@ -72,5 +123,42 @@
             $(".warn").fadeOut("normal");
         }, 2000)
     }
+
+    $("#enter").on("click", function() {
+        //注销账号！
+        $(".clearIDwrap").css("display", "none");
+        $(".loadWrap").css("display", "block");
+        setTimeout(function() {
+            $(".loadWrap").css("display", "none");
+        }, 5000);
+
+        $.ajax({
+            url: dataStr + "v1/agent/updateMember",
+            type:"put",
+            data:JSON.stringify({
+                id:thismemberID,
+                updateType:2	// 1 更新设备标识 2 经纪人注销 3 经纪人退出登录 4 经纪人修改密码 5 更新性别 6 更新姓名
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            },
+            success: function(data) {
+                if(data.code == 200){
+                    $(".loaderBox").html("<div class='loader'><div class='right'></div></div>注销成功！");
+
+                    setTimeout(function() {
+                        $(".loadWrap").css("display", "none");
+                        window.location.href = "../../login/login.jsp?member=1";
+                    }, 800)
+                } else {
+                    $(".loadWrap").css("display", "none");
+                    warn("操作失败！");
+
+                }
+
+            }
+        }); //
+
+    });
 
 });

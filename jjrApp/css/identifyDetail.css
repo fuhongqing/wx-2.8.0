@@ -1,24 +1,23 @@
 #detailPage{
-    padding-bottom: 1.5rem;
-    overflow-y: auto;
+    padding-bottom: .65rem;
+    overflow: auto;
     height: 6rem;
-    /*background: #F8F8F8;*/
 }
 #detailPage section{
     padding: 0;
 }
 #detailPage img{
     vertical-align: middle;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
 }
 #detailPage .passSignImg,#detailPage .rejectSignImg{
     display: none;
 }
 #detailPage section>img{
     position: absolute;
-    right: .4rem;
-    top: .4rem;
-    width: .62rem;
-    height: .62rem;
+    right: -14px;
+    top: -16px;
 }
 #detailPage header{
     position: relative;
@@ -33,12 +32,6 @@
     width: .46rem;
     position: absolute;
 }
-#detailPage header>.backOut{
-    width: .46rem;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-}
 #detailPage header>.title{
     font-size: 17px;
     font-weight: bold;
@@ -46,58 +39,8 @@
 #detailPage section{
     position: relative;
 }
-#detailPage .foldTile{
-    display: none;
-    background: #F8F8F8;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 0 .2rem;
-}
-#detailPage .foldTile>div:last-child{
-    height: .44rem;
-    line-height: .44rem;
-}
-#detailPage .foldBtn{
-    float: right;
-    width: .44rem;
-    height: .44rem;
-    line-height: .44rem;
-    text-align: right;
-}
-/*分行*/
-#branchDet{
-    display: none;
-    height: .5rem;
-    line-height: .5rem;
-    background: #fff;
-    font-size: 16px;
-    padding: 0 .2rem;
-}
-#branchDet>span:first-child{
-    color: #999999;
-}
-/*公司*/
-#companyInfo{
-    display: none;
-    height: .5rem;
-    line-height: .5rem;
-    background: #fff;
-    padding: 0 .2rem;
-    font-size: 16px;
-}
-#companyInfo>div:first-child{
-    float: right;
-}
-#companyInfo>div:last-child{
-    color: #999999;
-}
-#outModCancle{
-    color: #999999;
-    border-left: .01rem solid #F0F0F0;
-}
 #detailPage section>ul{
-    padding-left: .2rem;
-    background: #fff;
+    padding-left: .15rem;
 }
 #detailPage section>ul>li{
     padding: 0;
@@ -111,15 +54,13 @@
     flex: 1;
 }
 #licenceLi{
-    padding: .2rem;
+    padding: .15rem;
+    border-bottom: .1rem solid #F8F8F8;
     min-height: 1.2rem;
-    background: #fff;
 }
 #licenceLi>div{
     position: relative;
     display: inline-block;
-    margin-bottom: .08rem;
-    margin-right: .03rem;
 }
 #licenceLi>div>div{
     position: absolute;
@@ -127,12 +68,14 @@
     top: 0;
     z-index: 15;
     background: rgba(0,0,0,.1);
-    width: .78rem;
-    height: .78rem;
+    width: .8rem;
+    height: .8rem;
 }
 #licenceLi>div>img{
-    width: .78rem;
-    height: .78rem;
+    width: .8rem;
+    height: .8rem;
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 #detailPage section .key{
     display: inline-block;
@@ -156,11 +99,6 @@
 #detailPage section>.rejectDiv,section>.passDiv,section>.line{
     display: none;
 }
-#detailPage section>.rejectDiv>img{
-    width: .16rem;
-    height: .16rem;
-    margin-left: .1rem;
-}
 #detailPage section>.step1{
     margin-top: .2rem;
     margin-left: .15rem;
@@ -172,7 +110,7 @@
 #detailPage section>.step2>.rejectModal{
     position: absolute;
     left: 1.2rem;
-    top: .5rem;
+    top: .46rem;
     min-height: .62rem;
     width: 2.24rem;
     background: #F8F8F8;
@@ -218,7 +156,6 @@
     height: .6rem;
     border-top: .01rem solid rgba(0,0,0,.25);
     padding: .09rem .15rem;
-    background: #fff;
 }
 #detailPage footer>div{
     background: #59CCAD;

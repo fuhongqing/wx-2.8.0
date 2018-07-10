@@ -18,49 +18,7 @@ img {
     /*-webkit-transform: scale(.5);*/
     /*transform: scale(.5);*/
 }
-.outModal{
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 15;
-    background: rgba(0,0,0,.5);
-}
-.outToast{
-    width: 2.4rem;
-    height: 1.1rem;
-    background: #FCFCFC;
-    border-radius: .12rem;
-    position: absolute;
-    z-index: 500;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-}
-.outToast>div:first-child{
-    height: .64rem;
-    padding: .1rem .2rem;
-    text-align: center;
-    border-bottom: .01rem solid #F0F0F0;
-}
-.outToast>div:last-child{
-    height: .45rem;
-    line-height: .45rem;
-    color: #08C4A3;
-    display: flex;
-}
-.outToast>div:last-child>div{
-    text-align: center;
-    width: 50%;
-    font-size: 17px;
-}
-#outModSure{
-    border-right: .01rem solid #F0F0F0;
-}
+
 button {
     outline: none;
     border: none;
@@ -86,6 +44,15 @@ h3 {
     padding: .1rem .2rem 0 .2rem;
     background-size: cover;
     height: 1.38rem;
+}
+
+#setting {
+    display: inline-block;
+    width: .3rem;
+    height: .3rem;
+    position: absolute;
+    right: .1rem;
+    top: .15rem;
 }
 
 #personInfo > .avator {

@@ -7,10 +7,10 @@ $.get(initUrl7+"api/v1/mine/yeji-rank/"+memberID, personTop);
 $.get(initUrl7+"api/v1/mine/yeji/"+memberID+'?timeType=1', xiangGuan);
 
 function personTop(data) {
-    if (data.code == "200") {
+    if (data.code == "200") {//Number(1/3).toFixed(2)*100
         var personYeji=(Number(data.data.memberYeJi/data.data.countYeJi)*100).toFixed(2)+'%';
         con.font = "60px PingFang-SC";
-        con.fillText(personYeji, 50, 180);
+        con.fillText(personYeji, 90, 180);
         $("#cJJinE").html(data.data.LastMonthYeJi);
         //画实线圆形
         con.beginPath();

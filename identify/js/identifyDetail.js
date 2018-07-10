@@ -3,8 +3,7 @@
     var identyInfoId=searchArr[0].split('=')[1];//认证id  1
     var identifyState=searchArr[1].split('=')[1];//1;  1审核中 2驳回 3通过
     var userType=localStorage.getItem('userType');
-    var isFold=false;//是否收起
-    var memberId=localStorage.getItem('memberID');//171929;//
+    var memberId=localStorage.getItem('memberID');//69;//
     //点击图片，显示大图
     function showBigImg(imgSrc) {
         $('.imgModal').fadeIn();
@@ -12,8 +11,6 @@
     }
     //获取详情
     if(userType==2){
-        $('#detailPage').css('background','#F8F8F8');
-        $('.foldTile,#branchDet').show();
         $.get(initUrl+'api/v1/mine/myCompanyInfo/'+memberId,function (data) {
             if(data.code=='200'){
                 $('.step1').hide();
@@ -27,14 +24,11 @@
                 var licenceHtml='';
                 var detailHtml=`
                 <li><span class="key">公司全称:</span><span>${detailData.companyName}</span></li>
-                <li><span class="key">公司办公地址:</span><span>${detailData.cityName+detailData.boroughName+detailData.address}</span></li>
+                <li><span class="key">公司办公地址:</span><span>${detailData.address}</span></li>
                 <li><span class="key">公司负责人:</span><span>${detailData.businessEntity}</span></li>
                 <li><span class="key">负责人电话:</span><span>${detailData.businessEntityPhone}</span></li>
                `;
                 $('#detailUl').html(detailHtml);
-                $('#companyInfo>.comName').html(detailData.companyName);//公司
-                $('#branchDet>.branchName').html(detailData.branchName);//分行
-                $('#branchDet>.branchNum').html(detailData.branchCode);//分行码
                 //营业执照
                 if(detailData.images!=''){
                     $.each(urlData,function (i) {
@@ -46,10 +40,6 @@
                            `;
                     });
                     $('#licenceLi>span').after(licenceHtml);
-                    if(urlData.length>2){
-                        $('#licenceLi>span.key').css('width','.66rem');
-                        $('#licenceLi>div:nth-child(5),#licenceLi>div:nth-child(8)').css('margin-left','.7rem');
-                    }
                 }
             }else{
                 showTips(data.msg||'获取详情失败');
@@ -82,14 +72,11 @@
                     $('#userPhone').val(detailData.businessEntityPhone);
                     var detailHtml=`
                 <li><span class="key">公司全称:</span><span>${detailData.companyName}</span></li>
-                <li><span class="key">公司办公地址:</span><span>${detailData.cityName+detailData.boroughName+detailData.address}</span></li>
+                <li><span class="key">公司办公地址:</span><span>${detailData.address}</span></li>
                 <li><span class="key">公司负责人:</span><span>${detailData.businessEntity}</span></li>
                 <li><span class="key">负责人电话:</span><span>${detailData.businessEntityPhone}</span></li>
                `;
                     $('#detailUl').html(detailHtml);
-                    $('#companyInfo>.comName').html(detailData.companyName);//公司
-                    $('#branchDet>.branchName').html(detailData.branchName);//分行
-                    $('#branchDet>.branchNum').html(detailData.branchCode);//分行码
                     localStorage.setItem('cityName',detailData.cityName);//城市名
                     localStorage.setItem('infoId',detailData.id);//信息id
                     localStorage.setItem('boroughName',detailData.boroughName);//区域名
@@ -118,10 +105,6 @@
                         });
                         $('#licenceLi>span').after(licenceHtml);
                         $('#upLoad>span').after(modifyCodeHtml);
-                    }
-                    if(urlData.length>2){
-                        $('#licenceLi>span.key').css('width','.66rem');
-                        $('#licenceLi>div:nth-child(5),#licenceLi>div:nth-child(8)').css('margin-left','.7rem');
                     }
                     //审核流程展示
                     $('#submitTime').html(detailData.createTime);
@@ -167,8 +150,8 @@
         }
     });
     //返回按钮
-    $('#detailPage>header').on('click','.backOut',function () {
-        $('.outModal').show();
+    $('#detailPage>header').on('click','.backImg',function () {
+        history.back();
     });
     //修改按钮
     $('#modifyBtn').click(function () {
@@ -189,48 +172,5 @@
     $('#mapSubmit').click(function () {
         $('#companyAttr').val($('#imgDiv>span').html()+$('#inputDiv>input').val());
         $('#modifyPage').show();
-    });
-    //收起
-    $('.foldTile').on('click','.foldBtn',function () {
-        isFold=!isFold;
-        if(isFold){
-            $('#detailUl,#licenceLi').hide();
-            $('.passSignImg').hide();
-            $('#companyInfo').show();
-            $('.foldBtn').text('展开');
-        }else{
-            $('#detailUl,#licenceLi').show();
-            $('.passSignImg').show();
-            $('#companyInfo').hide();
-            $('.foldBtn').text('收起');
-        }
-    });
-    //退出
-    $('#outModCancle').on('click',function () {
-        $('.outModal').hide();
-    });
-    $('#outModSure').on('click',function () {
-        $.ajax({
-            url: initUrl + "api/v1/agent/updateMember",
-            type:"put",
-            data:JSON.stringify({
-                id:memberId,
-                updateType:2	// 1 更新设备标识 2 经纪人注销 3 经纪人退出登录 4 经纪人修改密码 5 更新性别 6 更新姓名
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            },
-            success: function(data) {
-                if(data.code == 200){
-                    showTips('退出成功');
-                    setTimeout(function() {
-                        window.location.href = "../login/login.jsp?member=1";
-                    }, 1000)
-                } else {
-                    showTips('操作失败');
-                }
-
-            }
-        });
     });
 });

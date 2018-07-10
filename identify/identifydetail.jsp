@@ -14,35 +14,19 @@
 <body>
 <div id="detailPage">
     <header>
-        <div class="backImg" onclick="history.back()"><img style="width: .09rem;height: .17rem;" src="img/back.png" alt=""></div>
+        <div class="backImg" onclick="history.back()"><img src="img/back.png" alt=""></div>
         <div class="title">认证公司</div>
-        <div class="backOut"><img style="width: .18rem;height: .18rem;" src="img/ic_quit@2x.png" alt=""></div>
     </header>
     <section>
         <img class="waitSignImg" src="img/waitSign.png" alt="">
         <img class="passSignImg" src="img/passSign.png" alt="">
         <img class="rejectSignImg" src="img/rejectSign.png" alt="">
-        <div class="foldTile">
-            <div class="foldBtn">收起</div>
-            <div>公司信息</div>
-        </div>
         <ul id="detailUl" class="inputUl">
             <!--动态-->
         </ul>
-        <div id="companyInfo">
-            <div class="comName"></div>
-            <div>公司全称</div>
-        </div>
         <div id="licenceLi">
             <span class="key">营业执照</span>
             <!--动态-->
-        </div>
-        <div class="foldTile">
-            <div></div>
-            <div>分行</div>
-        </div>
-        <div id="branchDet">
-            <span style="float: right" class="branchNum"></span><span class="branchName"></span>
         </div>
         <div class="step step1">
             <span id="submitTime"></span><span class="point"></span><span>提交</span>
@@ -108,19 +92,10 @@
 <div class="imgModal">
     <div class="imgToast"></div>
 </div>
-<div class="outModal">
-    <div class="outToast">
-        <div>退出本公司后，您的客户数据 将被清空，是否继续？</div>
-        <div>
-            <div id="outModSure">确定</div>
-            <div id="outModCancle">取消</div>
-        </div>
-    </div>
-</div>
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="js/setting.js?v=201815081652"></script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&amp;ak=CB2ede775afeb6e413abd40261396a69"></script>
-<script type="text/javascript" src="js/identifyDetail.js?v=201815081652"></script>
+<script type="text/javascript" src="js/identifyDetail.js?v=201825081652"></script>
 <script type="text/javascript" src="js/identifyAdd.js?v=201805081652"></script>
 </body>
 </html>

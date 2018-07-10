@@ -100,15 +100,6 @@
 #follow-lists .tip{
     margin-top: .05rem;
 }
-/*录音*/
-#follow-lists .record{
-    width: .82rem;
-    height: .3rem;
-    line-height: .3rem;
-    background: #E6F7F0;
-    padding-left: .1rem;
-    margin-top: .06rem;
-}
 #cusDetailPage footer{
     display: flex;
     height: .5rem;

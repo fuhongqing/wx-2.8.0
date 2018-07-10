@@ -150,7 +150,6 @@ $(function () {
     });
     $('#cus-lists,#history-lists').on('click','.cus-item',function () {
         var paramsData=$.trim($(this).attr('id'));
-       // var paramsData='930430;6;A201807034547';
         $(location).attr('href','customerDetail.jsp?paramsData='+paramsData);
     });
     $('#filter').on('click','li',function () {
