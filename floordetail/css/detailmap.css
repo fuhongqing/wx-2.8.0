@@ -1,0 +1,86 @@
+﻿body{
+    margin: 0;
+    padding: 0;
+}
+ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+header img{
+    vertical-align: middle;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+}
+footer img{
+    width: .3rem;
+}
+.anchorBL{
+    display: none;
+}
+/*.BMap_Marker{*/
+    /*-webkit-transform: scale(.5);*/
+    /*transform: scale(.5);*/
+/*}*/
+header{
+    position: relative;
+    border-bottom: .01rem solid #DDDDDD;
+}
+header>div{
+    height: .47rem;
+    text-align: center;
+    line-height: .47rem;
+}
+header>.backImg{
+    width: .47rem;
+    position: absolute;
+}
+header>.title{
+    font-size: 17px;
+    font-weight: bold;
+}
+#attrMap{
+    height: 4.4rem;
+    width: 100%;
+}
+
+footer{
+    margin-top: .08rem;
+    font-size: 12px;
+    padding: 0 .2rem;
+    height: .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer p{
+    text-align: center;
+    color: RGBA(51, 51, 51, .53);
+}
+.pActive>p{
+    color: #333333;
+}
+/*文字字体大小是不要换算成rem做单位的，而是使用媒体查询来进行动态设置*/
+@media screen and (max-width: 321px) {
+    body {
+        font-size:13px;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width:400px) {
+    body {
+        font-size:14px;
+    }
+}
+
+@media screen and (min-width: 400px) {
+    body {
+        font-size: 16px;
+    }
+}

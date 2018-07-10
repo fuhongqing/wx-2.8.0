@@ -1,0 +1,189 @@
+.infinite-scroll-preloader{
+    display: none;
+}
+header .top{
+    position: relative;
+}
+header h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+header .back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .3rem;
+    height: .3rem;
+}
+#search{
+    text-align: center;
+    position: relative;
+    padding-top: .1rem;
+}
+#search>img{
+    position: absolute;
+    left: .3rem;
+    top: .2rem;
+}
+#search>input{
+    outline: none;
+    padding-left: .3rem;
+    width: 3.35rem;
+    height: .35rem;
+    background: #F5F5F5;
+    border-radius: .05rem;
+    border: none;
+}
+#filter{
+    height: .42rem;
+    padding: 0 .2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .01rem solid #F3F3F3;
+}
+#filter>li{
+    font-size: 16px;
+}
+/*未带看*/
+.no-look{
+    color:#02BD9C;
+}
+.no-look>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #02BD9C;
+}
+/*来访*/
+.visited{
+    color:#2EA9FF;
+}
+.visited>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #2EA9FF;
+}
+/*成交*/
+.deal{
+    color:#FFA100;
+}
+.deal>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #FFA100;
+}
+/*已发佣*/
+.commited{
+    color:#FF7171;
+}
+.commited>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #FF7171;
+}
+
+#cusListSec{
+    padding: 0 .2rem .65rem .2rem;
+}
+.cus-item{
+    min-height: .9rem;
+    border-bottom: .01rem solid #F3F3F3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cus-item b{
+    font-size: 16px;
+    margin-right: .2rem;
+}
+.cus-item .name{
+    margin-bottom: .1rem;
+}
+.cus-item .name>span{
+    color: #BBBBBB;
+    background: #F6F6F6;
+    display: inline-block;
+    padding: 0 .06rem;
+    height: .2rem;
+    line-height: .2rem;
+    text-align: center;
+}
+.cus-item>.cus-gt{
+    font-size: 12px;
+    color: #7C7C7C;
+    align-self: flex-end;
+    margin-bottom: .2rem;
+}
+/*搜索页*/
+#searchPage{
+    display: none;
+}
+#searchPage header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: .44rem;
+    padding: 0 .2rem;
+    border-bottom: .01rem solid #EDEDED;
+    background: #fff;
+}
+#searchPage header>.back{
+    width: .26rem;
+    height: .26rem;
+}
+#searchPage header>h2{
+    flex: 1;
+    text-align: center;
+}
+#searchPage section{
+    background: #fff;
+}
+#searchPage section>h2{
+    color: #ACACAC;
+    background: #fff;
+    font-size: 16px;
+    padding: .16rem 0;
+    margin: 0 .2rem;
+    border-bottom: .01rem solid #F1F1F1;
+}
+#cus-search{
+    text-align: center;
+    position: relative;
+    padding-top: .1rem;
+}
+#cus-search>img{
+    position: absolute;
+    left: .3rem;
+    top: .2rem;
+}
+#cus-search>button{
+    display: none;
+    position: absolute;
+    right: .3rem;
+    top: .2rem;
+    background: #F5F5F5;
+}
+#cus-search>input{
+    outline: none;
+    padding-left: .3rem;
+    width: 3.35rem;
+    height: .35rem;
+    background: #F5F5F5;
+    border-radius: .05rem;
+    border: none;
+}
+#history-lists{
+    padding: 0 .2rem;
+}
+#history-lists>.history-item{
+    color: #ACACAC;
+    font-size: 16px;
+    height: .6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#clearAll{
+    text-align: center;
+    margin-top: .35rem;
+    color: #CDCDCD;
+    font-size: 16px;
+}

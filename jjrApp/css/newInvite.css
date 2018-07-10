@@ -1,0 +1,88 @@
+img{
+    vertical-align: middle;
+}
+body>a{
+    display: none;
+}
+/*header{*/
+    /*position: relative;*/
+    /*background: #1C1B20;*/
+/*}*/
+/*header>div{*/
+    /*height: .46rem;*/
+    /*text-align: center;*/
+    /*line-height: .46rem;*/
+/*}*/
+/*header>.backImg{*/
+    /*width: .46rem;*/
+    /*position: absolute;*/
+/*}*/
+/*header>.title{*/
+    /*font-size: 18px;*/
+    /*font-weight: bold;*/
+    /*color: #fff;*/
+/*}*/
+#invitePage{
+    background: #2389F5;
+    min-height: 6.67rem;
+    padding-bottom: .2rem;
+}
+#inviteBg{
+    background: url("../img/invite_bg.png") no-repeat center top;
+}
+#inviteBg>div{
+    text-align: center;
+}
+#inviteBg>div:first-child{
+    margin-bottom: .4rem;
+}
+#inviteBg>.imgPerson{
+    padding-right: .2rem;
+}
+#inviteBg>div.redBack{
+    position: relative;
+    bottom: .25rem;
+}
+#inviteBg>div.activity{
+    margin-top: .12rem;
+}
+#myInvite{
+    position: absolute;
+    top: 3.25rem;
+    left: .55rem;
+    width: 2.65rem;
+}
+#myInvite>ul>li:not(.title){
+    height: .34rem;
+    line-height: .34rem;
+    color: #545353;
+    text-align: center;
+}
+#myInvite>ul>li.title{
+    height: .42rem;
+    line-height: .42rem;
+    text-align: center;
+    font-size: 18px;
+    color: #DD462B;
+    border-bottom: .01rem solid #D2D2D2;
+}
+#inviteLists{
+    height: 1.4rem;
+    overflow: auto;
+}
+/*底部*/
+footer{
+    margin-top: .3rem;
+    margin-bottom: .6rem;
+}
+#inviteBtn{
+    width: 2.58rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    background: linear-gradient(to  bottom, #F1AD52 0%, #F6782B 100% );
+    border-radius: .2rem;
+    margin: 0 auto;
+}

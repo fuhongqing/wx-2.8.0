@@ -1,0 +1,160 @@
+.infinite-scroll-preloader{
+    display: none;
+}
+.content{
+    top: .9rem;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+*{
+    box-sizing: border-box;
+}
+img{
+    vertical-align: middle;
+    /*-webkit-transform: scale(.5);*/
+    /*transform: scale(.5);*/
+}
+button{
+    outline: none;
+    border: none;
+    background: #fff;
+    -webkit-appearance: none;
+}
+h2{
+    font-size: 18px;
+}
+h3{
+    font-size: 16px;
+}
+.page{
+    padding-top: .84rem;
+}
+header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    background: #fff;
+}
+header>h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+header>.back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .25rem;
+    height: .25rem;
+}
+.page>.select{
+    position: fixed;
+    width: 100%;
+    top: .44rem;
+    font-size: 16px;
+    height: .4rem;
+    padding: 0 .2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #F8F8F8;
+    border-bottom: .01rem solid #F1F1F1;
+    z-index: 50;
+}
+#personLists>li{
+    height: .46rem;
+    border-bottom: .01rem solid #F1F1F1;
+    padding: 0 .2rem;
+    color: #888888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#personLists p{
+    text-align: center;
+}
+#personLists .name{
+    font-weight: bold;
+    margin-bottom: .02rem;
+    height: .21rem;
+    overflow: hidden;
+}
+#personLists .time{
+    font-size: 10px;
+    color: #ACACAC;
+}
+.personModal{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 5;
+}
+.personToast{
+    position: absolute;
+    top:.84rem;
+    width: 100%;
+}
+.personToast>div{
+    background: #fff;
+    color: #999999;
+    font-size: 16px;
+    height: .46rem;
+    line-height: .46rem;
+    padding: 0 .2rem;
+    border-bottom: .01rem solid #F1F1F1;
+}
+.personToast>div:last-child{
+    border-bottom: none;
+    border-bottom-left-radius: .02rem;
+    border-bottom-right-radius: .02rem;
+}
+.personToast h3{
+    font-weight: normal;
+}
+/*文字字体大小是不要换算成rem做单位的，而是使用媒体查询来进行动态设置*/
+@media screen and (max-width: 321px) {
+    .page {
+        font-size:13px
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width:400px) {
+    .page {
+        font-size:14px
+    }
+}
+
+@media screen and (min-width: 400px){
+    html{
+        font-size: 109.333px!important;
+    }
+    .page {
+        font-size:16px;
+    }
+}
+/*针对light7框架默认根标签字体进行覆盖处理*/
+@media  screen and (min-width: 414px) and (max-width:480px) {
+    html {
+        font-size: 110.4px!important;
+    }
+}
+@media  screen and (min-width: 480px){
+    html {
+        font-size: 204.8px!important;
+    }
+}

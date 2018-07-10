@@ -1,0 +1,78 @@
+img{
+    vertical-align: middle;
+}
+/*header{*/
+    /*position: relative;*/
+    /*background: #fff;*/
+/*}*/
+/*header>div{*/
+    /*height: .44rem;*/
+    /*text-align: center;*/
+    /*line-height: .44rem;*/
+/*}*/
+/*header>.backImg{*/
+    /*width: .44rem;*/
+    /*position: absolute;*/
+/*}*/
+/*header>.title{*/
+    /*font-size: 18px;*/
+    /*font-weight: bold;*/
+/*}*/
+section{
+    position: relative;
+}
+#resultTip{
+    position: absolute;
+    top: .35rem;
+    width: 100%;
+    text-align: center;
+}
+#resultTip>span{
+    color: #FFFFFF;
+    font-size: 22px;
+    position: relative;
+    top: .03rem;
+    margin-left: .15rem;
+}
+#downloadBtn{
+    position: absolute;
+    top: 1.23rem;
+    width: 100%;
+    text-align: center;
+}
+#downloadBtn>div{
+    width: 1.3rem;
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    border-radius: .24rem;
+    background: linear-gradient(to bottom,#03CAB4 0%,#0BDBA1 100%);
+    margin: 0 auto;
+}
+#downloadBtn>p{
+    margin-top: .22rem;
+}
+#divide{
+    position: absolute;
+    width: 2.5rem;
+    border-top: .02rem dashed #D6D6D6;
+    top: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#attention{
+    position: absolute;
+    top: 2.92rem;
+    width: 100%;
+    text-align: center;
+}
+#attention>div{
+    border: .08rem solid #EFEFEF;
+    margin: 0 auto;
+    width: .96rem;
+}
+#attention>p{
+    margin-top: .2rem;
+}

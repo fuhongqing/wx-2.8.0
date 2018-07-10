@@ -1,0 +1,41 @@
+﻿<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的业绩</title>
+    <link href="http://www.ehaofang.com/img/ef.ico" type="image/x-icon" rel="icon">
+    <link href="http://www.ehaofang.com/img/ef.ico" type="image/x-icon" rel="shortcut icon">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="less/persontop.css">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="js/setting.js?v=201814251233"></script>
+    <script src="static/fastclick.min.js"></script>
+</head>
+<body>
+<div class="page_persontop">
+    <div class="jump">
+        <a class="back" onclick="history.back()">
+            <img src="img/ic_back_white.png" style="width: .45rem"/></a>
+        <p style="position: absolute; bottom:1rem;width: 100%"><span id="month">*</span>月业绩：￥<span
+                id="cJJinE">*****</span></p>
+        <div class="circle">
+            <canvas id="circle" width="300" height="300" style="margin: 0 auto;"></canvas>
+        </div>
+    </div>
+    <div class="tab_nav">
+        <div class="tab_nav_item active" data-condition="1">上周</div>
+        <div class="tab_nav_item" data-condition="2">本周</div>
+        <div class="tab_nav_item" data-condition="3">本月</div>
+        <div class="tab_nav_item" data-condition="0">全部</div>
+    </div>
+    <div class="tab_list">
+        <div class="tab_list_item" id="xiangGuan">
+
+        </div>
+    </div>
+</div>
+<script src="static/jquery.min.js"></script>
+<script src="js/persontop.js?v=201814121244"></script>
+</body>
+</html>

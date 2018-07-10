@@ -1,0 +1,390 @@
+﻿#cusDetailPage{
+    padding-bottom: .65rem;
+}
+#cusDetailPage header{
+    position: relative;
+}
+#cusDetailPage header>h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+#cusDetailPage header>.back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .25rem;
+    height: .25rem;
+}
+#progress{
+    padding: .1rem .2rem .2rem .2rem;
+}
+#progress .contacts{
+    background: linear-gradient(to right, #08C5B0, #0ECD98);
+    padding: .1rem .15rem;
+    margin-bottom: .2rem;
+}
+#progress .item{
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .15rem
+}
+#progress .item img{
+    width: .14rem;
+}
+#progress .item:last-child{
+    margin-bottom:0;
+}
+#progress .name{
+    font-size: 18px;
+}
+#progress .phone{
+    margin-right: .1rem;
+    margin-left: .15rem;
+}
+#progress .propertyName{
+    font-size: 16px;
+}
+#cusDetailPage .card{
+    box-shadow: 0 0 0.5rem 0 #DDDDDD;
+    position: relative;
+    font-size: 15px;
+    width: 3.1rem;
+    margin: .1rem auto;
+}
+#cusDetailPage .card>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#cusDetailPage .card>div:not(.circle){
+    padding: 0 .2rem;
+    min-height: .36rem;
+    background: #fff;
+}
+#cusDetailPage .card>div:last-child{
+    border-top: .01rem solid #F1F1F1;
+}
+#cusDetailPage .gap{
+    height: .1rem;
+    background: #F8F8F8;
+}
+#follow{
+    padding: 0 .2rem .15rem .2rem;
+}
+#follow>div:first-child{
+    color: #999999;
+    border-bottom: .01rem solid #F1F1F1;
+}
+#follow>div:first-child>h2{
+    padding: .15rem 0;
+}
+#follow-lists>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: .01rem solid #F1F1F1;
+    min-height: .86rem;
+    padding: .1rem 0;
+}
+#follow-lists .content{
+    margin-left: .1rem;
+    flex: 1;
+}
+#follow-lists h4{
+    height: .2rem;
+}
+#follow-lists .tip{
+    margin-top: .05rem;
+}
+/*录音*/
+#follow-lists .record{
+    width: .82rem;
+    height: .3rem;
+    line-height: .3rem;
+    background: #E6F7F0;
+    padding-left: .1rem;
+    margin-top: .06rem;
+}
+#cusDetailPage footer{
+    display: flex;
+    height: .5rem;
+    /*position: fixed;*/
+    width: 100%;
+    /*bottom: 0;*/
+}
+#cusDetailPage footer>div{
+    flex: 1;
+    box-shadow: 0 0 .04rem 0 #D2D2D2;
+    font-size: 16px;
+    text-align: center;
+    line-height: .5rem;
+}
+#cusDetailPage footer>div:first-child{
+    background: #fff;
+    color: #08C4A3;
+}
+#cusDetailPage footer>div:last-child{
+    background: #00CBAC;
+    color: #fff;
+}
+#cusDetailPage footer a{
+    color: #fff;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+#cusDetailPage .visitPro>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: .44rem;
+}
+#cusDetailPage .relativeDiv{
+    position: relative;
+    padding-left: .22rem;
+}
+#cusDetailPage .visitPro .circle{
+    top:.05rem;
+    left: 0;
+}
+#cusDetailPage .visitPro .line{
+    top: .16rem;
+    left: .04rem;
+}
+#cusDetailPage .circle{
+    display: inline-block;
+    width: .1rem;
+    height: .1rem;
+    background: #00CBAC;
+    border-radius: 50%;
+    position: absolute;
+    top: .14rem;
+    left: -.14rem;
+}
+#cusDetailPage .line{
+    display: inline-block;
+    height: calc(100% + .1rem);
+    width: .01rem;
+    position: absolute;
+    left: -.09rem;
+    top: 0.2rem;
+    background: #00CBAC;
+}
+#cusDetailPage .card .circle{
+    background: #DDDDDD;
+}
+#cusDetailPage .card .line{
+    background: #DDDDDD;
+}
+#cusDetailPage .progressTime{
+    color: #999999;
+    font-size: 12px;
+}
+#signCard .circle,#signCard .line,#commissionCard .circle,#commissionCard .line{
+    background: #00CBAC;
+}
+#commissionCard>div:last-child{
+    border-top: none;
+}
+#visitedCard,.secPro,.dealPro,.signPro,.commissionPro,#dealCard,#signCard,#commissionCard{
+    display: none;
+}
+/*进度*/
+#proDetailPage{
+    background: #F8F8F8;
+    min-height: 6.67rem;
+    padding-bottom: .65rem;
+    display: none;
+}
+#proDetailPage>h2{
+    height: .5rem;
+    line-height: .5rem;
+    padding-left: .2rem;
+    color: #02BD9C;
+}
+#proDetailPage header{
+    position: relative;
+    background: #fff;
+}
+#proDetailPage header>h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+#proDetailPage header>.back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .25rem;
+    height: .25rem;
+}
+#proDetailPage section{
+    padding: 0 .2rem;
+    background: #fff;
+}
+#proDetailPage section>div{
+    min-height: .5rem;
+    padding: .17rem 0;
+    border-bottom: .01rem solid #F1F1F1;
+    font-size: 16px;
+}
+#proDetailPage section>div:last-child{
+    border-bottom:none;
+}
+#proDetailPage section>div>.label{
+    display: inline-block;
+    width: .85rem;
+    color: #7C7C7C;
+}
+#proDetailPage section .remark{
+    display: inline-block;
+    width: 2.5rem;
+    vertical-align: middle;
+}
+#proDetailPage .commissionPro>h2{
+    color: #7C7C7C;
+    background: #F8F8F8;
+    height: .5rem;
+    line-height: .5rem;
+    padding-left: .2rem;
+}
+#proDetailPage .commissionPro>div{
+    padding: .15rem .2rem;
+    background: #fff;
+}
+#proDetailPage .commissionPro>div>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .25rem;
+}
+#proDetailPage .commissionPro>div>div>div{
+    font-size: 16px;
+}
+#proDetailPage .relativeDiv{
+    position: relative;
+}
+#proDetailPage .relativeDiv>img{
+    width: .12rem;
+    margin-right: .18rem;
+}
+#proDetailPage .relativeDiv>.line{
+    display: inline-block;
+    height: calc(100% + .1rem);
+    width: .01rem;
+    position: absolute;
+    left: .05rem;
+    top: 0.2rem;
+    background: #00CBAC;
+}
+#proDetailPage .relativeDiv>.commProLine{
+    background: #DDDDDD;
+}
+#proDetailPage .relativeDiv>.passed{
+    background: #DDDDDD;
+}
+#visitedSec,#dealSec,#signSec,#commissionSec,#proDetailPage .commissionPro{
+    display: none;
+}
+/*跟进*/
+#followEditePage{
+    display: none;
+}
+#followEditePage header{
+    position: relative;
+}
+#followEditePage header>h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+#followEditePage header>.back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .25rem;
+    height: .25rem;
+}
+#followEditePage textarea{
+    font-size: 16px;
+    outline: none;
+    background: #FAFAFA;
+    border: .01rem solid #F1F1F1;
+    width: 100%;
+    min-height: 1.47rem;
+    margin-top: .15rem;
+    margin-bottom: .35rem;
+    padding: .1rem .1rem .1rem .35rem;
+}
+#followEditePage section{
+    padding: 0 .2rem;
+    position: relative;
+}
+#followEditePage section>img{
+    position: absolute;
+    top: .28rem;
+    left: .3rem;
+}
+#subFollow{
+    width: 3.15rem;
+    height: .45rem;
+    line-height: .45rem;
+    text-align: center;
+    color: #fff;
+    background: #00CBAC;
+    border-radius: .05rem;
+    box-shadow: 0 .02rem .04rem 0 #DEDEDE;
+    margin: 0 auto;
+}
+/*客户分析*/
+#customAnaPage{
+    display: none;
+    padding-bottom: .65rem;
+}
+#customAnaPage header{
+    position: relative;
+}
+#customAnaPage header>h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+#customAnaPage header>.back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .25rem;
+    height: .25rem;
+}
+#customAnaPage .gap{
+    height: .1rem;
+    background: #F8F8F8;
+}
+#customAnaPage section{
+    padding: 0 .2rem;
+}
+#customAnaPage section>div{
+    height: .5rem;
+    border-bottom: .01rem solid #F1F1F1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+}
+#customAnaPage section>div:last-child{
+    border-bottom:none;
+}
+#customAnaPage section>div>div:last-child{
+    flex: 1;
+}
+#customAnaPage .label{
+    width: 1.2rem;
+    color: #7C7C7C;
+}

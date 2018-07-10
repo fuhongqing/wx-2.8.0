@@ -1,0 +1,174 @@
+.content{
+    top: .42rem;
+}
+.infinite-scroll-preloader{
+    display: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+*{
+    box-sizing: border-box;
+}
+img{
+    vertical-align: middle;
+    /*-webkit-transform: scale(.5);*/
+    /*transform: scale(.5);*/
+}
+button{
+    outline: none;
+    border: none;
+    background: #fff;
+    -webkit-appearance: none;
+}
+h2{
+    font-size: 18px;
+}
+h3{
+    font-size: 16px;
+}
+.page{
+    padding-top: .84rem;
+}
+header{
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    top: 0;
+    z-index: 50;
+}
+header>h2{
+    height: .44rem;
+    line-height: .44rem;
+    text-align: center;
+    border-bottom: .01rem solid #DDDDDD;
+}
+header>.back{
+    position: absolute;
+    top: .1rem;
+    left: .2rem;
+    width: .25rem;
+    height: .25rem;
+}
+#filter{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 50;
+    height: .42rem;
+    padding: 0 .2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .01rem solid #F3F3F3;
+}
+#filter>li{
+    font-size: 16px;
+    height: .42rem;
+    line-height: .42rem;
+    border-bottom: .02rem solid transparent;
+}
+/*未带看*/
+.no-look{
+    color:#02BD9C;
+}
+.no-look>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #02BD9C;
+}
+/*来访*/
+.visited{
+    color:#2EA9FF;
+}
+.visited>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #2EA9FF;
+}
+/*成交*/
+.deal{
+    color:#FFA100;
+}
+.deal>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #FFA100;
+}
+/*已发佣*/
+.commited{
+    color:#FF7171;
+}
+.commited>span{
+    padding: .08rem 0;
+    border-bottom: .01rem solid #FF7171;
+}
+
+#cusSec{
+    padding: 0 .2rem;
+}
+#cus-lists>.cus-item{
+    border-bottom: .01rem solid #F3F3F3;
+    padding: .1rem 0;
+}
+#cus-lists>.cus-item>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#cus-lists>.cus-item b{
+    font-size: 16px;
+    margin-right: .2rem;
+}
+#cus-lists>.cus-item .name{
+    margin-bottom: .1rem;
+}
+#cus-lists>.cus-item .name>span{
+    color: #BBBBBB;
+    background: #F6F6F6;
+    display: inline-block;
+    padding: 0 .06rem;
+    height: .2rem;
+    line-height: .2rem;
+    text-align: center;
+}
+#cus-lists .gt-item{
+    font-size: 12px;
+    color: #7C7C7C;
+}
+/*文字字体大小是不要换算成rem做单位的，而是使用媒体查询来进行动态设置*/
+@media screen and (max-width: 321px) {
+    .page {
+        font-size:13px
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width:400px) {
+    .page {
+        font-size:14px
+    }
+}
+
+@media screen and (min-width: 400px){
+    html{
+        font-size: 109.333px!important;
+    }
+    .page {
+        font-size:16px;
+    }
+}
+/*针对light7框架默认根标签字体进行覆盖处理*/
+@media  screen and (min-width: 414px) and (max-width:480px) {
+    html {
+        font-size: 110.4px!important;
+    }
+}
+@media  screen and (min-width: 480px){
+    html {
+        font-size: 204.8px!important;
+    }
+}

@@ -1,0 +1,156 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+ul,ol,dl,dd,h1,h2,h3,h4,h5,h6,p{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+*{
+    box-sizing: border-box;
+}
+img{
+    vertical-align: middle;
+    /*-webkit-transform: scale(.5);*/
+    /*transform: scale(.5);*/
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+button{
+    outline: none;
+    border: none;
+    background: #fff;
+    -webkit-appearance: none;
+}
+textarea::-webkit-input-placeholder,input::-webkit-input-placeholder {
+    color:#CDCDCD!important;
+    font-size: 16px;
+    font-weight: bold;
+}
+textarea:-moz-placeholder,input:-moz-placeholder {
+    color:#CDCDCD!important;
+    font-size: 16px;
+    font-weight: bold;
+}
+textarea::-moz-placeholder,input::-moz-placeholder {
+    color:#CDCDCD!important;
+    font-size: 16px;
+    font-weight: bold;
+}
+textarea:-ms-input-placeholder,input:-ms-input-placeholder {
+    color:#CDCDCD!important;
+    font-size: 16px;
+    font-weight: bold;
+}
+h2{
+    font-size: 18px;
+}
+h3{
+    font-size: 16px;
+}
+/*模态框*/
+.imgModal,.modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    background: rgba(0,0,0,.5);
+}
+.imgModal{
+    background: rgba(0,0,0,.8);
+}
+/*提示框*/
+.toast {
+    min-width: .4rem;
+    min-height: .4rem;
+    padding: .1rem .1rem;
+    font-size: 16px;
+    color: white;
+    background: rgba(0, 0, 0, .8);
+    border-radius: .2rem;
+    position: absolute;
+    z-index: 20;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.imgToast{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+}
+.imgToast>img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+#footer-item {
+    position: fixed;
+    bottom: 0;
+    height: .65rem;
+    width: 3.75rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    z-index: 2000;
+    border-top: .01rem solid #DDDDDD;
+    font-size: 14px;
+}
+
+#footer-item p {
+    text-align: center;
+    color: #999999;
+}
+
+#footer-item p > img {
+    width: .24rem;
+    margin-bottom: .04rem;
+}
+
+#footer-item > li > img {
+    width: .42rem;
+}
+/*文字字体大小是不要换算成rem做单位的，而是使用媒体查询来进行动态设置*/
+@media screen and (max-width: 321px) {
+    .page {
+        font-size:13px
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width:400px) {
+    .page {
+        font-size:14px
+    }
+}
+
+@media screen and (min-width: 400px){
+    html{
+        font-size: 109.333px!important;
+    }
+    .page {
+        font-size:16px;
+    }
+}
+/*针对light7框架默认根标签字体进行覆盖处理*/
+@media  screen and (min-width: 414px) and (max-width:480px) {
+    html {
+        font-size: 110.4px!important;
+    }
+}
+@media  screen and (min-width: 480px){
+    html {
+        font-size: 204.8px!important;
+    }
+}

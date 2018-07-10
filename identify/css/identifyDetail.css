@@ -1,0 +1,234 @@
+#detailPage{
+    overflow-y: auto;
+    height: 6rem;
+    /*background: #F8F8F8;*/
+    padding-bottom: 1.5rem;
+}
+#detailPage section{
+    padding: 0;
+}
+#detailPage img{
+    vertical-align: middle;
+}
+#detailPage .passSignImg,#detailPage .rejectSignImg{
+    display: none;
+}
+#detailPage section>img{
+    position: absolute;
+    right: .4rem;
+    top: .4rem;
+    width: .62rem;
+    height: .62rem;
+}
+#detailPage header{
+    position: relative;
+    border-bottom: .01rem solid #DDDDDD;
+}
+#detailPage header>div{
+    height: .46rem;
+    text-align: center;
+    line-height: .46rem;
+}
+#detailPage header>.backImg{
+    width: .46rem;
+    position: absolute;
+}
+#detailPage header>.backOut{
+    width: .46rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+#detailPage header>.title{
+    font-size: 17px;
+    font-weight: bold;
+}
+#detailPage section{
+    position: relative;
+}
+#detailPage .foldTile{
+    display: none;
+    background: #F8F8F8;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 0 .2rem;
+}
+#detailPage .foldTile>div:last-child{
+    height: .44rem;
+    line-height: .44rem;
+}
+#detailPage .foldBtn{
+    float: right;
+    width: .44rem;
+    height: .44rem;
+    line-height: .44rem;
+    text-align: right;
+}
+/*分行*/
+#branchDet{
+    display: none;
+    height: .5rem;
+    line-height: .5rem;
+    background: #fff;
+    font-size: 16px;
+    padding: 0 .2rem;
+}
+#branchDet>span:first-child{
+    color: #999999;
+}
+/*公司*/
+#companyInfo{
+    display: none;
+    height: .5rem;
+    line-height: .5rem;
+    background: #fff;
+    padding: 0 .2rem;
+    font-size: 16px;
+}
+#companyInfo>div:first-child{
+    float: right;
+}
+#companyInfo>div:last-child{
+    color: #999999;
+}
+#outModCancle{
+    color: #999999;
+    border-left: .01rem solid #F0F0F0;
+}
+#detailPage section>ul{
+    padding-left: .2rem;
+    background: #fff;
+}
+#detailPage section>ul>li{
+    padding: 0;
+    height: .46rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: .01rem solid #EEEEEE;
+}
+#detailPage section>ul>li>span:last-child{
+    flex: 1;
+}
+#licenceLi{
+    padding: .2rem;
+    min-height: 1.2rem;
+    background: #fff;
+}
+#licenceLi>div{
+    position: relative;
+    display: inline-block;
+    margin-bottom: .08rem;
+    margin-right: .03rem;
+}
+#licenceLi>div>div{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 15;
+    background: rgba(0,0,0,.1);
+    width: .78rem;
+    height: .78rem;
+}
+#licenceLi>div>img{
+    width: .78rem;
+    height: .78rem;
+}
+#detailPage section .key{
+    display: inline-block;
+    color: #999999;
+    width: 1.08rem;
+}
+#detailPage section .step>span{
+    font-size: 16px;
+}
+#detailPage section .step>span:first-child{
+    color: #999999;
+    width: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+#detailPage section .step>.rejectSpan{
+    color: #FC6F6F;
+}
+#detailPage section .step>.passSpan{
+    color: #59CCAD;
+}
+#detailPage section>.rejectDiv,section>.passDiv,section>.line{
+    display: none;
+}
+#detailPage section>.rejectDiv>img{
+    width: .16rem;
+    height: .16rem;
+    margin-left: .1rem;
+}
+#detailPage section>.step1{
+    margin-top: .2rem;
+    margin-left: .15rem;
+}
+#detailPage section>.step2{
+    position: relative;
+    margin-left: .15rem;
+}
+#detailPage section>.step2>.rejectModal{
+    position: absolute;
+    left: 1.2rem;
+    top: .32rem;
+    min-height: .62rem;
+    width: 2.24rem;
+    background: #F8F8F8;
+    border: .01rem solid #DDDDDD;
+    padding: .08rem;
+}
+#detailPage section>.step2>.rejectModal>.caret{
+    position: absolute;
+    left: .24rem;
+    top: -.12rem;
+    border: .06rem solid transparent;
+    border-bottom-color: #F8F8F8;
+}
+#detailPage section>.step2>.rejectModal>.caretOut{
+    top: -.13rem;
+    border-bottom-color: #DDDDDD;
+    z-index: -1;
+}
+#detailPage section .point{
+    display: inline-block;
+    width: .13rem;
+    height: .13rem;
+    margin: 0 .12rem;
+    border-radius: 50%;
+    background: #DDDDDD;
+}
+#detailPage section>.line{
+    height: .3rem;
+    position: relative;
+    bottom: .1rem;
+}
+#detailPage section>.line>span{
+    display: inline-block;
+    width: 1.33rem;
+    height: calc(100% + .2rem);
+    border-right: .01rem dotted #DDDDDD;
+}
+#detailPage footer{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    display: none;
+    height: .6rem;
+    border-top: .01rem solid rgba(0,0,0,.25);
+    padding: .09rem .15rem;
+    background: #fff;
+}
+#detailPage footer>div{
+    background: #59CCAD;
+    color: #fff;
+    text-align: center;
+    height: .42rem;
+    line-height: .42rem;
+    border-radius: .02rem;
+}
+#modifyPage{
+    display: none;
+}
